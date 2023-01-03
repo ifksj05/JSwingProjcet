@@ -71,9 +71,9 @@ public class LoginForm extends BaseFrame {
 				
 				
 				
-			mainFrom.setLoginBefore(data);
-			
-			super.dispose();
+				mainFrom.setLoginBefore(data);
+				
+				super.dispose();
 			}
 
 		});

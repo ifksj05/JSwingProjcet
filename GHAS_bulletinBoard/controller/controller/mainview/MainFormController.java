@@ -1,11 +1,13 @@
 package controller.mainview;
 
+import windows.MainFrom;
 import windows.sub.LoginForm;
 
 public class MainFormController {
-	public MainFormController() {
+	public MainFormController(MainFrom mainFrom) {
 
-		new LoginForm();
+		new LoginForm(mainFrom);
+		
 
 	}
 }

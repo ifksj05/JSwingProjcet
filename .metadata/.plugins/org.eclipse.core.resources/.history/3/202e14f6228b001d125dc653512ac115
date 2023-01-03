@@ -78,11 +78,10 @@ public class MainFrom extends BaseFrame {
 	@Override
 	public void event() {
 		jbtLogin.addActionListener(e -> {
-			//new MainFormController(this);
-//////
+			new MainFormController(this);
 		});
 	}
-
+	
 	public void setLoginBefore(Vector<Vector<String>> data2) {
 		LoginBefore = data2;
 	}

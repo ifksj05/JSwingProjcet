@@ -18,10 +18,9 @@ public class LoginForm extends BaseFrame {
 	private String[] userData = new String[2];
 	private LoginFormController lfc;
 	private Vector<Vector<String>> data;
-	private MainFrom mainFrom;
 
 	public LoginForm(MainFrom mainFrom) {
-		this.mainFrom = mainFrom;
+
 		setFrame("로그인 폼", 300, 150);
 	}
 
@@ -56,7 +55,6 @@ public class LoginForm extends BaseFrame {
 		jbLogin.addActionListener(e -> {
 
 			System.out.println(jtfId.getText() + " " + jtfPw.getText());
-			
 			userData[0] = jtfId.getText();
 			userData[1] = jtfPw.getText();
 
@@ -67,13 +65,7 @@ public class LoginForm extends BaseFrame {
 			if (data.size() == 0)
 				System.out.println("데이터 없음");
 			else {
-				System.out.println(data.get(0).get(3) + "님 환영합니다.");
-				
-				
-				
-			mainFrom.setLoginBefore(data);
-			
-			super.dispose();
+				System.out.println("로그인 됐습니다.");
 			}
 
 		});

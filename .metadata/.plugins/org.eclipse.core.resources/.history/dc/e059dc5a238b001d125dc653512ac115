@@ -56,7 +56,6 @@ public class LoginForm extends BaseFrame {
 		jbLogin.addActionListener(e -> {
 
 			System.out.println(jtfId.getText() + " " + jtfPw.getText());
-			
 			userData[0] = jtfId.getText();
 			userData[1] = jtfPw.getText();
 
@@ -71,9 +70,9 @@ public class LoginForm extends BaseFrame {
 				
 				
 				
-			mainFrom.setLoginBefore(data);
-			
-			super.dispose();
+				mainFrom.setLoginBefore(data);
+				
+				super.dispose();
 			}
 
 		});
