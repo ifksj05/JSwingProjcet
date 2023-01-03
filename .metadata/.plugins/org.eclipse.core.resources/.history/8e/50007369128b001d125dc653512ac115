@@ -1,0 +1,13 @@
+package controller.mainview.sub;
+
+import jdbc.DbManager;
+
+public class LoginFormController {
+	private DbManager db;
+
+	public LoginFormController() {
+		
+		db = new DbManager();
+		
+	}
+}

@@ -1,0 +1,17 @@
+package controller.mainview.sub;
+
+import jdbc.DbManager;
+
+public class LoginFormController {
+	private DbManager db;
+	private String id;
+	private String pw;
+
+	public LoginFormController(String id, String pw) {
+
+		this.id = id;
+		this.pw = pw;
+
+	}
+
+}

@@ -1,0 +1,16 @@
+package controller.mainview.sub;
+
+import dao.dml.select.LoginDateDao;
+import jdbc.DbManager;
+import windows.sub.LoginForm;
+
+public class LoginFormController {
+	private String[] userData;
+	private LoginForm LoginForm;
+
+	public LoginFormController(String[] userData) {
+		this.userData = userData;
+		new LoginDateDao(userData);
+	}
+
+}

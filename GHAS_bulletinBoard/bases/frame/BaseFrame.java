@@ -42,7 +42,7 @@ public abstract class BaseFrame extends JFrame implements BaseI {
 
 		super.setVisible(true);
 		super.setLocationRelativeTo(null);
-		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	}
 

@@ -1,0 +1,15 @@
+package controller.mainview.sub;
+
+import jdbc.DbManager;
+import windows.sub.LoginForm;
+
+public class LoginFormController {
+	private DbManager db;
+	private String[] userData;
+	private LoginForm LoginForm;
+
+	public LoginFormController(String[] userData) {
+		this.userData = userData;
+	}
+
+}

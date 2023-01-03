@@ -1,0 +1,81 @@
+package windows;
+
+import java.util.Vector;
+
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import comps.BaseButton;
+import comps.BaseLable;
+import dao.dml.select.TableDataShowDao;
+import frame.BaseFrame;
+
+public class MainFrom extends BaseFrame {
+
+	private BaseButton jbtLogin;
+	private BaseButton jbtSignup;
+	private BaseLable jlbManySerch;
+	private Vector<Vector<String>> data;
+	private Vector<String> cols;
+	private DefaultTableModel dtm;
+	private JTable jT;
+	private JScrollPane scroll;
+
+	public MainFrom() {
+		setFrame("게시판", 1000, 800);
+
+	}
+
+	@Override
+	public void mkComp() {
+		jlbManySerch = new BaseLable("환영합니다 로그인 하세요.").center().setFont(15); // 로그인 상태
+
+		jbtLogin = new BaseButton("로그인");
+		jbtSignup = new BaseButton("회원가입");
+
+		cols = new Vector<String>();
+		cols.add("번호");
+		cols.add("제목");
+		cols.add("작성일");
+
+		TableDataShowDao tabledatashowdao = new TableDataShowDao();
+
+		data = tabledatashowdao.getData();
+
+		dtm = new DefaultTableModel(data, cols);
+		jT = new JTable(dtm);
+		scroll = new JScrollPane(jT);
+
+	}
+
+	@Override
+	public void disign() {
+
+		// 상단 : 제목, 가장 많이 조회, 로그인, 회원가입
+		jpTop.addChild();
+		jpTop.jpTop.add(new BaseLable("GHAS 기능대회 게시판").center().setFont(40));
+		jpTop.jpBottom.addChild();
+
+		jpTop.jpBottom.jpCenter.add(jlbManySerch); // 가장 많이 조회한 내용
+		jpTop.jpBottom.jpRight.setGrid(2, 1, 0, 5).add(jbtLogin);
+		jpTop.jpBottom.jpRight.add(jbtSignup);
+
+		jpMain.setBorder(10, 10, 10, 10);
+
+		// 센터 : jtable
+
+		jpCenter.add(scroll);
+		jpCenter.setBorder(10, 0, 0, 0);
+
+	}
+
+	@Override
+	public void event() {
+		jbtLogin.addActionListener(e -> {
+
+		});
+	}
+
+}

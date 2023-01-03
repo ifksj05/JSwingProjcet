@@ -1,0 +1,9 @@
+package controller.mainview.sub;
+
+public class LoginFormController {
+	public LoginFormController() {
+		
+		
+		
+	}
+}

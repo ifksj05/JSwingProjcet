@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 import comps.BaseButton;
 import comps.BaseLable;
+import controller.mainview.MainFormController;
 import dao.dml.select.TableDataShowDao;
 import frame.BaseFrame;
 
@@ -73,7 +74,9 @@ public class MainFrom extends BaseFrame {
 
 	@Override
 	public void event() {
-
+		jbtLogin.addActionListener(e -> {
+			new MainFormController();
+		});
 	}
 
 }

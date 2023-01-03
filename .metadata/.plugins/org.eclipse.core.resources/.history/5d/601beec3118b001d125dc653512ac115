@@ -1,0 +1,5 @@
+package controller.mainview;
+
+public class MainFormController {
+
+}
