@@ -12,7 +12,6 @@ import comps.BaseLable;
 import controller.mainview.MainFormController;
 import dao.dml.select.TableDataShowDao;
 import frame.BaseFrame;
-import windows.sub.SignUpForm;
 
 public class MainFrom extends BaseFrame {
 
@@ -88,10 +87,7 @@ public class MainFrom extends BaseFrame {
 	public void event() {
 		jbtLogin.addActionListener(e -> {
 			new MainFormController(this);
-		});
 
-		jbtSignup.addActionListener(e -> {
-			new SignUpForm();
 		});
 	}
 

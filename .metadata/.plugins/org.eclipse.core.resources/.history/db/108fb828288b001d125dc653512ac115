@@ -1,0 +1,29 @@
+package windows.sub;
+
+import frame.BaseFrame;
+
+public class SignUpForm extends BaseFrame {
+	public static void main(String[] args) {
+		new SignUpForm();
+	}
+	
+	public SignUpForm() {
+		setFrame("회원가입", 300, 300);
+	}
+
+	@Override
+	public void mkComp() {
+
+	}
+
+	@Override
+	public void disign() {
+
+	}
+
+	@Override
+	public void event() {
+
+	}
+
+}

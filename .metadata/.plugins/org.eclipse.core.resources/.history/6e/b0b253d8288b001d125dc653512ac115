@@ -1,0 +1,37 @@
+package windows.sub;
+
+import javax.swing.JTextField;
+
+import frame.BaseFrame;
+
+public class SignUpForm extends BaseFrame {
+	public static void main(String[] args) {
+		new SignUpForm();
+	}
+
+	private JTextField jtfName;
+	private JTextField jtfId;
+	private JTextField jtfPw;
+
+	public SignUpForm() {
+		setFrame("회원가입", 300, 350);
+	}
+
+	@Override
+	public void mkComp() {
+		jtfName = new JTextField();
+		jtfId = new JTextField();
+		jtfPw = new JTextField();
+	}
+
+	@Override
+	public void disign() {
+
+	}
+
+	@Override
+	public void event() {
+
+	}
+
+}
