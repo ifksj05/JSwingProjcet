@@ -1,0 +1,26 @@
+package testWindows;
+
+import frame.BaseFrame;
+
+public class test extends BaseFrame {
+
+	public test() {
+		setFrame("test", 500, 500);
+	}
+
+	@Override
+	public void mkComp() {
+
+	}
+
+	@Override
+	public void disign() {
+
+	}
+
+	@Override
+	public void event() {
+
+	}
+
+}

@@ -1,0 +1,28 @@
+package testWindows;
+
+import java.util.Vector;
+
+import frame.BaseFrame;
+
+public class testSub extends BaseFrame {
+
+	public testSub(Vector<Vector<String>> contents) {
+		setFrame(contents.get(1).get(3), 500, 500);
+	}
+
+	@Override
+	public void mkComp() {
+
+	}
+
+	@Override
+	public void disign() {
+
+	}
+
+	@Override
+	public void event() {
+
+	}
+
+}

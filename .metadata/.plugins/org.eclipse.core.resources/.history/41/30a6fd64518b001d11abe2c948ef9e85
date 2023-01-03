@@ -1,0 +1,44 @@
+package testWindows;
+
+import java.util.Vector;
+
+import frame.BaseFrame;
+import jdbc.DbManager;
+
+public class test extends BaseFrame {
+
+	private Vector<String> cols;
+	private DbManager db;
+
+	public test() {
+		setFrame("test", 500, 500);
+	}
+
+	@Override
+	public void mkComp() {
+
+		// table 컬럼 생성
+		cols = new Vector<String>();
+		cols.add("번호");
+		cols.add("제목");
+		cols.add("작성일");
+
+		// table 데이터 생성
+		Vector<Vector<String>> data = new Vector<>();
+		db = new DbManager();
+		data = db.getData("SELECT u_no, n_title, n_mkdate FROM ghas_notice.notice;");
+	
+	
+	}
+
+	@Override
+	public void disign() {
+
+	}
+
+	@Override
+	public void event() {
+
+	}
+
+}
