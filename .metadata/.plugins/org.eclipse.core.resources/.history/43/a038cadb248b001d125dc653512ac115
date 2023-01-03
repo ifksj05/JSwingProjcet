@@ -26,7 +26,6 @@ public class MainFrom extends BaseFrame {
 	private DefaultTableModel dtm;
 	private JTable jT;
 	private JScrollPane scroll;
-	private String ManySerchData;
 
 	public MainFrom() {
 		setFrame("게시판", 1000, 800);
@@ -35,14 +34,7 @@ public class MainFrom extends BaseFrame {
 
 	@Override
 	public void mkComp() {
-
-		if (name.isBlank()) {
-			ManySerchData = "환영합니다 로그인 하세요.";
-		} else {
-			ManySerchData = name;
-		}
-
-		jlbManySerch = new BaseLable(ManySerchData).center().setFont(15); // 로그인 상태
+		jlbManySerch = new BaseLable("환영합니다 로그인 하세요.").center().setFont(15); // 로그인 상태
 
 		jbtLogin = new BaseButton("로그인");
 		jbtSignup = new BaseButton("회원가입");
@@ -93,6 +85,7 @@ public class MainFrom extends BaseFrame {
 
 	public void setLoginBefore(Vector<Vector<String>> LoginBefore) {
 		this.LoginBefore = LoginBefore;
+		this.name = name;
 	}
 
 	public void setLoginBefore(Vector<Vector<String>> LoginBefore, String name) {

@@ -42,7 +42,7 @@ public class MainFrom extends BaseFrame {
 			ManySerchData = name;
 		}
 
-		jlbManySerch = new BaseLable(ManySerchData).center().setFont(15); // 로그인 상태
+		jlbManySerch = new BaseLable("환영합니다 로그인 하세요.").center().setFont(15); // 로그인 상태
 
 		jbtLogin = new BaseButton("로그인");
 		jbtSignup = new BaseButton("회원가입");

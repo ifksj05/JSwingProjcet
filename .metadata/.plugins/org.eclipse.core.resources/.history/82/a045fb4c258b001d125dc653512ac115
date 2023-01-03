@@ -70,8 +70,7 @@ public class LoginForm extends BaseFrame {
 				System.out.println(data.get(0).get(3) + "님 환영합니다.");
 
 				mainFrom.setLoginBefore(data, data.get(0).get(3));
-				mainFrom.repaint();
-				
+
 				super.dispose();
 			}
 
