@@ -17,8 +17,6 @@ public class SignUpForm extends BaseFrame {
 	private JTextField jtfPw;
 	private BaseButton jbtSignup;
 	private String name;
-	private String id;
-	private String pw;
 
 	public SignUpForm() {
 		setFrame("회원가입", 300, 250);
@@ -62,7 +60,7 @@ public class SignUpForm extends BaseFrame {
 		id = jtfId.getText();
 		pw = jtfPw.getText();
 		
-		new SignUpContoller(name, id, pw);
+		new SignUpContoller();
 	}
 
 }

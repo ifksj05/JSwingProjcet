@@ -4,7 +4,6 @@ import javax.swing.JTextField;
 
 import comps.BaseButton;
 import comps.BaseLable;
-import controller.mainview.sub.SignUpContoller;
 import frame.BaseFrame;
 
 public class SignUpForm extends BaseFrame {
@@ -16,9 +15,6 @@ public class SignUpForm extends BaseFrame {
 	private JTextField jtfId;
 	private JTextField jtfPw;
 	private BaseButton jbtSignup;
-	private String name;
-	private String id;
-	private String pw;
 
 	public SignUpForm() {
 		setFrame("회원가입", 300, 250);
@@ -58,11 +54,7 @@ public class SignUpForm extends BaseFrame {
 
 	@Override
 	public void event() {
-		name = jtfName.getText();
-		id = jtfId.getText();
-		pw = jtfPw.getText();
-		
-		new SignUpContoller(name, id, pw);
+
 	}
 
 }

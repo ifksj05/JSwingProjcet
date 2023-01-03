@@ -1,7 +1,0 @@
-package windows.sub;
-
-import frame.BaseFrame;
-
-public class LoginForm extends BaseFrame{
-
-}

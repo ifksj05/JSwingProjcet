@@ -62,7 +62,7 @@ public class SignUpForm extends BaseFrame {
 		id = jtfId.getText();
 		pw = jtfPw.getText();
 		
-		new SignUpContoller(name, id, pw);
+		new SignUpContoller();
 	}
 
 }

@@ -1,0 +1,24 @@
+package controller.mainview.sub;
+
+import jdbc.DbManager;
+
+public class SignUpContoller {
+	private DbManager db;
+	private String name;
+	private String id;
+	private String pw;
+
+	public SignUpContoller() {
+		db = new DbManager();
+		db.setData(
+				"INSERT INTO `ghas_notice`.`user` (`u_id`, `u_pw`, `name`) VALUES ('test', 'test', 'test');\r\n" + "");
+
+	}
+	
+	public void setUserData() {
+		this.name = name;
+		this.id = id;
+		this.pw = pw;
+	}
+	
+}

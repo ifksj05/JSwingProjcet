@@ -1,0 +1,15 @@
+package controller.mainview.sub;
+
+import jdbc.DbManager;
+
+public class SignUpContoller {
+	private DbManager db;
+
+	public SignUpContoller() {
+		db = new DbManager();
+		db.setData("");
+		
+		
+
+	}
+}

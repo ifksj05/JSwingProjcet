@@ -1,0 +1,7 @@
+package controller.mainview.sub;
+
+public class SignUpContoller {
+	public SignUpContoller() {
+		
+	}
+}
