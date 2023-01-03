@@ -52,9 +52,5 @@ public abstract class BaseFrame extends JFrame implements BaseI {
 
 	}
 
-	public void disign() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

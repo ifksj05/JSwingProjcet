@@ -1,0 +1,36 @@
+package windows.sub;
+
+import javax.swing.JTextField;
+
+import frame.BaseFrame;
+
+public class LoginForm extends BaseFrame {
+
+	private JTextField jtfId;
+	private JTextField jtfPw;
+
+	public LoginForm() {
+		setFrame("로그인 폼", 300, 200);
+	}
+
+	@Override
+	public void mkComp() {
+		jtfId = new JTextField();
+		jtfPw = new JTextField();
+	}
+
+	@Override
+	public void disign() {
+
+	}
+
+	@Override
+	public void event() {
+
+	}
+
+	public static void main(String[] args) {
+		new LoginForm();
+	}
+
+}

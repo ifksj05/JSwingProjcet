@@ -1,0 +1,26 @@
+package windows.sub;
+
+import frame.BaseFrame;
+
+public class LoginForm extends BaseFrame {
+
+	public LoginForm() {
+
+	}
+
+	@Override
+	public void mkComp() {
+
+	}
+
+	@Override
+	public void disign() {
+
+	}
+
+	@Override
+	public void event() {
+
+	}
+
+}
