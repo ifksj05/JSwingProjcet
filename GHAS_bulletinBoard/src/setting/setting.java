@@ -2,15 +2,15 @@ package setting;
 
 import jdbc.DbManager;
 
-public class setDb {
+public class setting {
 	private DbManager db;
 	
 	public static void main(String[] args) {
-		setDb setDb = new setDb();
-		setDb.createDb();
+		setting setting = new setting();
+		setting.createDb();
 	}
 	
-	public setDb() {
+	public setting() {
 		db = new DbManager();
 	}
 
@@ -41,7 +41,7 @@ public class setDb {
 				+ "    FOREIGN KEY (`u_no`)\r\n" + "    REFERENCES `GHAS_notice`.`user` (`u_no`)\r\n"
 				+ "    ON DELETE NO ACTION\r\n" + "    ON UPDATE NO ACTION)\r\n" + "ENGINE = InnoDB;\r\n" + "\r\n"
 				+ "\r\n" + "SET SQL_MODE=@OLD_SQL_MODE;\r\n" + "SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;\r\n"
-				+ "SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;", null);
+				+ "SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;");
 
 		System.out.println("DB생성 완료");
 	}
