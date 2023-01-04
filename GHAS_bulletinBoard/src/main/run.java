@@ -1,3 +1,4 @@
+package main;
 import windows.MainForm;
 
 public class run {
