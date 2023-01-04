@@ -61,7 +61,7 @@ public class DbManager {
 
 			while (rs.next()) {
 				Vector<String> row = new Vector<>();
-				for (int i = 1; i < rsmd.getColumnCount(); i++) {
+				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
 					row.add(rs.getObject(i) + "");
 				}
 

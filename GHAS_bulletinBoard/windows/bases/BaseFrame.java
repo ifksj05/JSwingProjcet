@@ -41,4 +41,10 @@ public abstract class BaseFrame extends JFrame implements BaseI {
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	}
+
+	public void repaint() {
+		super.repaint();
+		super.validate();
+	}
+
 }

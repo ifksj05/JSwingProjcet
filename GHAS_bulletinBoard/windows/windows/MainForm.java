@@ -11,6 +11,7 @@ import bases.BaseFrame;
 import bases.BaseI;
 import bases.BaseLb;
 import jdbc.DbManager;
+import res.ResManager;
 
 public class MainForm extends BaseFrame {
 
@@ -68,11 +69,10 @@ public class MainForm extends BaseFrame {
 
 		top.bottom.addChild();
 
-		top.bottom.center.add(wellcomeLb.setCenter());
+		top.bottom.center.add(wellcomeLb.setCenter().setFont(15));
 
 		top.bottom.right.setGrid(2, 1, 0, 10);
-		top.bottom.right.add(loginBt);
-		top.bottom.right.add(signupBt);
+		statusIsNotLogin();
 
 		// center
 		center.add(noticeTableScrollPn);
@@ -83,9 +83,39 @@ public class MainForm extends BaseFrame {
 	@Override
 	public void event() {
 		loginBt.addActionListener(e -> {
-			new LoginForm();
+
+			System.out.println("ddd111111" + ResManager.userId);
+
+			new LoginForm(this);
 
 		});
+
+		logoutBt.addActionListener(e -> {
+			statusIsNotLogin();
+
+		});
+
+	}
+
+	public void statusIsNotLogin() {
+		wellcomeLb.setText("환영합니다 로그인 하세요.");
+
+		ResManager.setUserDataNull();
+
+		top.bottom.right.removeAll();
+		top.bottom.right.add(loginBt);
+		top.bottom.right.add(signupBt);
+		repaint();
+
+	}
+
+	public void statusIsLogin() {
+		wellcomeLb.setText(ResManager.userName + "환영합니다.");
+
+		top.bottom.right.removeAll();
+		top.bottom.right.add(logoutBt);
+
+		repaint();
 	}
 
 }

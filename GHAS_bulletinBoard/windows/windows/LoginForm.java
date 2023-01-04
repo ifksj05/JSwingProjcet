@@ -20,8 +20,17 @@ public class LoginForm extends BaseFrame {
 	private JTextField pwTf;
 	private BaseBt loginBt;
 	private Vector<Vector<String>> userDataTable;
+	private MainForm mainForm;
 
 	public LoginForm() {
+		System.out.println("1111111111");
+
+		System.out.println("9999999999");
+	}
+
+	public LoginForm(MainForm mainForm) {
+		// TODO Auto-generated constructor stub
+		this.mainForm = mainForm;
 		setFrame("로그인", 300, 125);
 	}
 
@@ -65,6 +74,8 @@ public class LoginForm extends BaseFrame {
 				idTf.setText("");
 				pwTf.setText("");
 
+				ResManager.setUserDataNull();
+
 				return;
 			}
 
@@ -78,10 +89,20 @@ public class LoginForm extends BaseFrame {
 				idTf.setText("");
 				pwTf.setText("");
 
+				ResManager.setUserDataNull();
+
 				return;
 			}
 
+			ResManager.userId = userDataTable.get(0).get(1);
+			ResManager.userPw = userDataTable.get(0).get(2);
+			ResManager.userName = userDataTable.get(0).get(3);
+//
+//			
+			mainForm.statusIsLogin();
+
 			System.out.println("로그인 성공");
+
 			super.dispose();
 
 		});
