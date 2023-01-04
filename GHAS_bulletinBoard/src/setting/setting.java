@@ -7,11 +7,12 @@ public class setting {
 	
 	public static void main(String[] args) {
 		setting setting = new setting();
-		setting.createDb();
+//		setting.createDb();
 	}
 	
 	public setting() {
 		db = new DbManager();
+		System.out.println("setting DB 연결");
 	}
 
 	public void createDb() {
