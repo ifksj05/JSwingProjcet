@@ -84,6 +84,7 @@ public class MainForm extends BaseFrame {
 	public void event() {
 		loginBt.addActionListener(e -> {
 			new LoginForm();
+
 		});
 	}
 

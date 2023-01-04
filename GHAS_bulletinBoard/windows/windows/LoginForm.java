@@ -1,10 +1,14 @@
 package windows;
 
+import java.util.Vector;
+
 import javax.swing.JTextField;
 
 import bases.BaseBt;
 import bases.BaseFrame;
 import bases.BaseLb;
+import jdbc.DbManager;
+import res.ResManager;
 
 public class LoginForm extends BaseFrame {
 
@@ -15,6 +19,7 @@ public class LoginForm extends BaseFrame {
 	private JTextField idTf;
 	private JTextField pwTf;
 	private BaseBt loginBt;
+	private Vector<Vector<String>> userDataTable;
 
 	public LoginForm() {
 		setFrame("로그인", 300, 125);
@@ -48,6 +53,38 @@ public class LoginForm extends BaseFrame {
 
 	@Override
 	public void event() {
+		DbManager db = new DbManager();
+
+		loginBt.addActionListener(e -> {
+			ResManager.userId = idTf.getText();
+			ResManager.userPw = idTf.getText();
+
+			if (ResManager.userId.isBlank() || ResManager.userPw.isBlank()) {
+				System.out.println("id 또는 pw를 입력하시오");
+
+				idTf.setText("");
+				pwTf.setText("");
+
+				return;
+			}
+
+			userDataTable = db.getData("SELECT * FROM ghas_notice.user where u_id = ? and u_pw = ?;", ResManager.userId,
+					ResManager.userPw);
+
+			if (userDataTable.size() == 0) {
+
+				System.out.println("계정 없음");
+
+				idTf.setText("");
+				pwTf.setText("");
+
+				return;
+			}
+
+			System.out.println("로그인 성공");
+			super.dispose();
+
+		});
 
 	}
 
