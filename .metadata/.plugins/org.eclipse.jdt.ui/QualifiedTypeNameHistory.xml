@@ -3,11 +3,15 @@
     <fullyQualifiedTypeName name="controller.mainview.sub.LoginFormController"/>
     <fullyQualifiedTypeName name="windows.sub.LoginForm"/>
     <fullyQualifiedTypeName name="dao.dml.select.LoginDateDao"/>
-    <fullyQualifiedTypeName name="frame.BaseFrame"/>
     <fullyQualifiedTypeName name="windows.sub.SignUpForm"/>
     <fullyQualifiedTypeName name="javax.swing.JTextField"/>
     <fullyQualifiedTypeName name="comps.BaseLable"/>
     <fullyQualifiedTypeName name="comps.BaseButton"/>
     <fullyQualifiedTypeName name="jdbc.DbManager"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="testWindows.test"/>
+    <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
+    <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
+    <fullyQualifiedTypeName name="frame.BaseFrame"/>
+    <fullyQualifiedTypeName name="java.lang.Thread"/>
 </qualifiedTypeNameHistroy>
