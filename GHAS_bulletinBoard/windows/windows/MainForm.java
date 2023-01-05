@@ -88,6 +88,8 @@ public class MainForm extends BaseFrame {
 	@Override
 	public void event() {
 
+		MainForm mainFrame = this;
+
 		noticeTable.addMouseListener(new MouseAdapter() {
 
 			private Vector<String> contentsData;
@@ -99,7 +101,7 @@ public class MainForm extends BaseFrame {
 
 				System.out.println(contentsData.get(0));
 
-				new ContentForm(contentsData);
+				new ContentForm(contentsData, mainFrame);
 
 //				String cleckNum = (String) noticeTable.getValueAt(noticeTable.getSelectedRow(), 0);
 //				System.out.println(cleckNum + ": 번호 값");
@@ -155,7 +157,12 @@ public class MainForm extends BaseFrame {
 
 	public void changeTable() {
 		noticTableData = db.getData("SELECT * FROM ghas_notice.notice;");
+		noticTableDtm = new DefaultTableModel(noticTableData, cols);
+		noticeTable = new JTable(noticTableDtm);
+		noticeTableScrollPn = new JScrollPane(noticeTable);
 
+		center.removeAll();
+		center.add(noticeTableScrollPn);
 
 		repaint();
 	}

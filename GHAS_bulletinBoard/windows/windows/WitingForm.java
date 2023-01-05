@@ -3,6 +3,7 @@ package windows;
 import java.awt.Component;
 import java.util.Calendar;
 
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import bases.BaseBt;
@@ -18,7 +19,7 @@ public class WitingForm extends BaseFrame {
 //	}
 
 	private JTextField titleTf;
-	private JTextField contentsTf;
+	private JTextArea contentsTf;
 	private BaseBt saveBt;
 	private DbManager db;
 	private MainForm mainForm;
@@ -31,7 +32,7 @@ public class WitingForm extends BaseFrame {
 	@Override
 	public void make() {
 		titleTf = new JTextField();
-		contentsTf = new JTextField(); // 피드백 필요 내용 텍필 뭘로 해야 하죠 ?
+		contentsTf = new JTextArea(); // 피드백 필요 내용 텍필 뭘로 해야 하죠 ?
 
 		saveBt = new BaseBt("저장");
 

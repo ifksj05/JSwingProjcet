@@ -1,5 +1,6 @@
 package windows;
 
+import java.awt.event.MouseAdapter;
 import java.util.Vector;
 
 import bases.BaseBt;
@@ -19,10 +20,12 @@ public class ContentForm extends BaseFrame {
 	private DbManager db;
 	private Vector<Vector<String>> tmpData;
 	private String u_name;
+	private MainForm mainFrame;
 
-	public ContentForm(Vector<String> contentsData) {
+	public ContentForm(Vector<String> contentsData, MainForm mainFrame) {
+		this.mainFrame = mainFrame;
+
 		db = new DbManager();
-
 		this.n_no = contentsData.get(0);
 		this.u_no = contentsData.get(1);
 		this.n_title = contentsData.get(2);
@@ -58,7 +61,23 @@ public class ContentForm extends BaseFrame {
 
 	@Override
 	public void event() {
+		deleteBt.addActionListener(e -> {
 
+			System.out.println("u_no : " + u_no);
+			System.out.println("ResManager.userNo : " + ResManager.userNo);
+			if (!u_no.equals(ResManager.userNo)) {
+				System.out.println("로그인 하지 않았습니다.");
+				return;
+
+			}
+
+			db.setData("DELETE FROM `ghas_notice`.`notice` WHERE (`n_no` = ?);", n_no);
+			mainFrame.changeTable();
+			System.out.println("삭제 됐습니다.");
+			
+			super.dispose();
+			
+		});
 	}
 
 }
