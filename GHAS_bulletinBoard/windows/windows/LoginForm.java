@@ -23,9 +23,6 @@ public class LoginForm extends BaseFrame {
 	private MainForm mainForm;
 
 	public LoginForm() {
-		System.out.println("1111111111");
-
-		System.out.println("9999999999");
 	}
 
 	public LoginForm(MainForm mainForm) {
@@ -45,7 +42,7 @@ public class LoginForm extends BaseFrame {
 	@Override
 	public void disign() {
 
-		main.setBorder(10, 10, 10, 10);
+//		main.setBorder(10, 10, 10, 10);
 
 		left.setGrid(2, 1, 0, 10);
 		left.add(new BaseLb("아이디"));
@@ -97,8 +94,7 @@ public class LoginForm extends BaseFrame {
 			ResManager.userId = userDataTable.get(0).get(1);
 			ResManager.userPw = userDataTable.get(0).get(2);
 			ResManager.userName = userDataTable.get(0).get(3);
-//
-//			
+
 			mainForm.statusIsLogin();
 
 			System.out.println("로그인 성공");

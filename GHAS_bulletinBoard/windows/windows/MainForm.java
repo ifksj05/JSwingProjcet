@@ -59,7 +59,7 @@ public class MainForm extends BaseFrame {
 	@Override
 	public void disign() {
 		// main
-		main.setBorder(10, 10, 10, 10);
+//		main.setBorder(10, 10, 10, 10);
 
 		// top
 		top.addChild();
@@ -84,8 +84,6 @@ public class MainForm extends BaseFrame {
 	public void event() {
 		loginBt.addActionListener(e -> {
 
-			System.out.println("ddd111111" + ResManager.userId);
-
 			new LoginForm(this);
 
 		});
@@ -93,6 +91,12 @@ public class MainForm extends BaseFrame {
 		logoutBt.addActionListener(e -> {
 			statusIsNotLogin();
 
+		});
+
+		signupBt.addActionListener(e -> {
+			
+			new SignupForm();
+			
 		});
 
 	}
@@ -110,7 +114,7 @@ public class MainForm extends BaseFrame {
 	}
 
 	public void statusIsLogin() {
-		wellcomeLb.setText(ResManager.userName + "환영합니다.");
+		wellcomeLb.setText(ResManager.userName + "님 환영합니다.");
 
 		top.bottom.right.removeAll();
 		top.bottom.right.add(logoutBt);

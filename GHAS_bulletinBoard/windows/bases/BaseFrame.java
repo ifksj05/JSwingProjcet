@@ -23,7 +23,8 @@ public abstract class BaseFrame extends JFrame implements BaseI {
 		bottom = new BasePn();
 
 		main = new BasePn();
-
+		main.setBorder(10, 10, 10, 10);
+		
 		make();
 		disign();
 		event();
