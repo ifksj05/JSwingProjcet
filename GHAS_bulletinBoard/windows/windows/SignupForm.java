@@ -11,9 +11,9 @@ import jdbc.DbManager;
 
 public class SignupForm extends BaseFrame {
 
-	public static void main(String[] args) {
-		new SignupForm();
-	}
+//	public static void main(String[] args) {
+//		new SignupForm();
+//	}
 
 	private JTextField nameTb;
 	private JTextField idTb;

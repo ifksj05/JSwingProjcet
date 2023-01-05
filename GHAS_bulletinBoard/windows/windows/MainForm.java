@@ -1,5 +1,7 @@
 package windows;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.JScrollPane;
@@ -25,6 +27,7 @@ public class MainForm extends BaseFrame {
 	private Vector<String> cols;
 	private DefaultTableModel noticTableDtm;
 	private JTable noticeTable;
+	private BaseBt writingBt;
 
 	public MainForm() {
 		setFrame("게시판", 500, 500);
@@ -37,7 +40,9 @@ public class MainForm extends BaseFrame {
 
 		loginBt = new BaseBt("로그인");
 		signupBt = new BaseBt("회원가입");
+
 		logoutBt = new BaseBt("로그아웃");
+		writingBt = new BaseBt("글쓰기");
 
 		// 센터
 		cols = new Vector<String>();
@@ -82,6 +87,27 @@ public class MainForm extends BaseFrame {
 
 	@Override
 	public void event() {
+
+		noticeTable.addMouseListener(new MouseAdapter() {
+
+			private Vector<String> contentsData;
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println(noticeTable.getSelectedRow() + "번 클릭");
+				contentsData = noticTableData.get(noticeTable.getSelectedRow());
+
+				System.out.println(contentsData.get(0));
+
+				new ContentForm(contentsData);
+
+//				String cleckNum = (String) noticeTable.getValueAt(noticeTable.getSelectedRow(), 0);
+//				System.out.println(cleckNum + ": 번호 값");
+
+			}
+
+		});
+
 		loginBt.addActionListener(e -> {
 
 			new LoginForm(this);
@@ -94,9 +120,9 @@ public class MainForm extends BaseFrame {
 		});
 
 		signupBt.addActionListener(e -> {
-			
+
 			new SignupForm();
-			
+
 		});
 
 	}
@@ -118,6 +144,7 @@ public class MainForm extends BaseFrame {
 
 		top.bottom.right.removeAll();
 		top.bottom.right.add(logoutBt);
+		top.bottom.right.add(writingBt);
 
 		repaint();
 	}
