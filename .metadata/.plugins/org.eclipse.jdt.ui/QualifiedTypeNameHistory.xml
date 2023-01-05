@@ -14,4 +14,7 @@
     <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
     <fullyQualifiedTypeName name="frame.BaseFrame"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextArea"/>
+    <fullyQualifiedTypeName name="res.ResManager"/>
+    <fullyQualifiedTypeName name="javax.swing.JFileChooser"/>
 </qualifiedTypeNameHistroy>
