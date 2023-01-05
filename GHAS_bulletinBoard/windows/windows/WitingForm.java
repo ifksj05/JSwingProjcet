@@ -21,7 +21,7 @@ public class WitingForm extends BaseFrame {
 	private JTextField contentsTf;
 	private BaseBt saveBt;
 	private DbManager db;
-	private Object mainForm;
+	private MainForm mainForm;
 
 	public WitingForm(MainForm mainForm) {
 		this.mainForm = mainForm;
@@ -74,10 +74,12 @@ public class WitingForm extends BaseFrame {
 			db.setData(
 					"INSERT INTO `ghas_notice`.`notice` (`u_no`, `n_title`, `n_contents`, `n_mkdate`) VALUES (?, ?, ?, ?);",
 					ResManager.userNo, title, contents, date);
-			
+
 //			((BaseFrame) mainForm).repaint();
+
 //			왜 새로고침이 안돼죠 ?? ㅜㅜ 
-			
+
+			mainForm.changeTable();
 			super.dispose();
 
 		});

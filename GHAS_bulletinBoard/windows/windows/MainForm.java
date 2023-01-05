@@ -153,4 +153,11 @@ public class MainForm extends BaseFrame {
 		repaint();
 	}
 
+	public void changeTable() {
+		noticTableData = db.getData("SELECT * FROM ghas_notice.notice;");
+
+
+		repaint();
+	}
+
 }
