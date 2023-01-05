@@ -87,29 +87,9 @@ public class MainForm extends BaseFrame {
 
 	@Override
 	public void event() {
-
-		MainForm mainFrame = this;
-
-		noticeTable.addMouseListener(new MouseAdapter() {
-
-			private Vector<String> contentsData;
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println(noticeTable.getSelectedRow() + "번 클릭");
-				contentsData = noticTableData.get(noticeTable.getSelectedRow());
-
-				System.out.println(contentsData.get(0));
-
-				new ContentForm(contentsData, mainFrame);
-
-//				String cleckNum = (String) noticeTable.getValueAt(noticeTable.getSelectedRow(), 0);
-//				System.out.println(cleckNum + ": 번호 값");
-
-			}
-
-		});
-
+		
+		tableEvent();
+		
 		loginBt.addActionListener(e -> {
 
 			new LoginForm(this);
@@ -131,6 +111,31 @@ public class MainForm extends BaseFrame {
 			new WitingForm(this);
 		});
 
+	}
+
+	private void tableEvent() {
+		// TODO Auto-generated method stub
+		MainForm mainFrame = this;
+
+		noticeTable.addMouseListener(new MouseAdapter() {
+
+			private Vector<String> contentsData;
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println(noticeTable.getSelectedRow() + "번 클릭");
+				contentsData = noticTableData.get(noticeTable.getSelectedRow());
+
+				System.out.println(contentsData.get(0));
+
+				new ContentForm(contentsData, mainFrame);
+
+//				String cleckNum = (String) noticeTable.getValueAt(noticeTable.getSelectedRow(), 0);
+//				System.out.println(cleckNum + ": 번호 값");
+
+			}
+
+		});
 	}
 
 	public void statusIsNotLogin() {
@@ -164,6 +169,7 @@ public class MainForm extends BaseFrame {
 		center.removeAll();
 		center.add(noticeTableScrollPn);
 
+		tableEvent();
 		repaint();
 	}
 
