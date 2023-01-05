@@ -1,23 +1,30 @@
 package windows;
 
+import java.awt.Component;
+import java.util.Calendar;
+
 import javax.swing.JTextField;
 
 import bases.BaseBt;
 import bases.BaseFrame;
 import bases.BaseLb;
+import jdbc.DbManager;
 import res.ResManager;
 
 public class WitingForm extends BaseFrame {
 
-	public static void main(String[] args) {
-		new WitingForm();
-	}
+//	public static void main(String[] args) {
+//		new WitingForm();
+//	}
 
 	private JTextField titleTf;
 	private JTextField contentsTf;
 	private BaseBt saveBt;
+	private DbManager db;
+	private Object mainForm;
 
-	public WitingForm() {
+	public WitingForm(MainForm mainForm) {
+		this.mainForm = mainForm;
 		setFrame("글쓰기", 400, 500);
 	}
 
@@ -50,6 +57,30 @@ public class WitingForm extends BaseFrame {
 	@Override
 	public void event() {
 
+		db = new DbManager();
+		Calendar time = Calendar.getInstance();
+
+		saveBt.addActionListener(e -> {
+			int year = time.get(Calendar.YEAR);
+			int month = time.get(Calendar.MONTH) + 1;
+			int day = time.get(Calendar.DAY_OF_MONTH);
+
+			String title = titleTf.getText();
+			String contents = contentsTf.getText();
+			String date = year + "-" + month + "-" + day;
+
+			System.out.println(date);
+
+			db.setData(
+					"INSERT INTO `ghas_notice`.`notice` (`u_no`, `n_title`, `n_contents`, `n_mkdate`) VALUES (?, ?, ?, ?);",
+					ResManager.userNo, title, contents, date);
+			
+//			((BaseFrame) mainForm).repaint();
+//			왜 새로고침이 안돼죠 ?? ㅜㅜ 
+			
+			super.dispose();
+
+		});
 	}
 
 }

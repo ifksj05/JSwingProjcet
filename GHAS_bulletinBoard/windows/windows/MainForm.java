@@ -126,7 +126,7 @@ public class MainForm extends BaseFrame {
 		});
 
 		writingBt.addActionListener(e -> {
-			new WitingForm();
+			new WitingForm(this);
 		});
 
 	}
