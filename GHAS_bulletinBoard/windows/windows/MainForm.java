@@ -114,15 +114,19 @@ public class MainForm extends BaseFrame {
 
 		});
 
+		signupBt.addActionListener(e -> {
+
+			new SignupForm();
+
+		});
+
 		logoutBt.addActionListener(e -> {
 			statusIsNotLogin();
 
 		});
 
-		signupBt.addActionListener(e -> {
-
-			new SignupForm();
-
+		writingBt.addActionListener(e -> {
+			new WitingForm();
 		});
 
 	}

@@ -6,6 +6,7 @@ import bases.BaseBt;
 import bases.BaseFrame;
 import bases.BaseLb;
 import jdbc.DbManager;
+import res.ResManager;
 
 public class ContentForm extends BaseFrame {
 	private String n_no;
@@ -27,11 +28,11 @@ public class ContentForm extends BaseFrame {
 		this.n_title = contentsData.get(2);
 		this.n_contents = contentsData.get(3);
 		this.n_mkdate = contentsData.get(4);
-		
+
 		tmpData = db.getData("SELECT * FROM ghas_notice.user where u_no = ?;", u_no);
-		
+
 		this.u_name = tmpData.get(0).get(3);
-		
+
 		setFrame(n_title, 500, 500);
 	}
 
@@ -46,14 +47,13 @@ public class ContentForm extends BaseFrame {
 		top.addChild();
 		top.left.add(new BaseLb("작성자 : " + u_name));
 		top.right.add(new BaseLb("작성일 : " + n_mkdate));
-		
+
 		center.add(new BaseLb(n_contents));
-		
+
 		bottom.setFlow();
 		bottom.add(updateBt);
 		bottom.add(deleteBt);
-		
-		
+
 	}
 
 	@Override

@@ -91,6 +91,7 @@ public class LoginForm extends BaseFrame {
 				return;
 			}
 
+			ResManager.userNo = userDataTable.get(0).get(0);
 			ResManager.userId = userDataTable.get(0).get(1);
 			ResManager.userPw = userDataTable.get(0).get(2);
 			ResManager.userName = userDataTable.get(0).get(3);
