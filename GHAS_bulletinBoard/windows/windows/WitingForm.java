@@ -24,8 +24,9 @@ public class WitingForm extends BaseFrame {
 	private BaseBt saveBt;
 	private DbManager db;
 	private MainForm mainForm;
-	private Vector<String> contentForm;
+	private Vector<String> contentsData;
 	private int statusForm = 0;
+	private ContentForm contentForm;
 
 	public WitingForm(MainForm mainForm) {
 		statusForm = 1;
@@ -33,9 +34,11 @@ public class WitingForm extends BaseFrame {
 		setFrame("글쓰기", 400, 500);
 	}
 
-	public WitingForm(String string, Vector<String> contentsData) {
+	public WitingForm(ContentForm contentForm, MainForm mainForm, String string, Vector<String> contentsData) {
 		statusForm = 2;
-		this.contentForm = contentsData;
+		this.contentForm = contentForm;
+		this.mainForm = mainForm;
+		this.contentsData = contentsData;
 		setFrame(string, 500, 500);
 		titleTf.setText(contentsData.get(2));
 		contentsTf.setText(contentsData.get(3));
@@ -73,11 +76,13 @@ public class WitingForm extends BaseFrame {
 
 		db = new DbManager();
 		Calendar time = Calendar.getInstance();
-
+		
+		
+		
 		saveBt.addActionListener(e -> {
 
 			if (statusForm == 1) { // 글쓰기
-				
+
 				System.out.println("글 쓰기 이벤트 실행");
 				int year = time.get(Calendar.YEAR);
 				int month = time.get(Calendar.MONTH) + 1;
@@ -106,11 +111,12 @@ public class WitingForm extends BaseFrame {
 				String contents = contentsTf.getText();
 
 				db.setData("UPDATE `ghas_notice`.`notice` SET `n_title` = ?, `n_contents` = ? WHERE (`n_no` = ?);",
-						title, contents, contentForm.get(0));
+						title, contents, contentsData.get(0));
 
 				statusForm = 0;
-//				mainForm.changeTable();
-//				super.dispose();
+				mainForm.changeTable();
+				contentForm.refresh();
+				super.dispose();
 			}
 
 		});

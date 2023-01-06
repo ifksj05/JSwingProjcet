@@ -65,7 +65,7 @@ public class ContentForm extends BaseFrame {
 	public void event() {
 
 		updateBt.addActionListener(e -> {
-			new WitingForm("수정", contentsData);
+			new WitingForm(this, mainFrame, "수정", contentsData);
 		});
 
 		deleteBt.addActionListener(e -> {
@@ -85,6 +85,19 @@ public class ContentForm extends BaseFrame {
 			super.dispose();
 
 		});
+		
+	}
+
+	public void dataRefresh() {
+
+		tmpData = db.getData("SELECT * FROM ghas_notice.user where u_no = ?;", u_no);
+
+	}
+
+	public void refresh() {
+
+		super.repaint();
+		super.validate();
 	}
 
 }
