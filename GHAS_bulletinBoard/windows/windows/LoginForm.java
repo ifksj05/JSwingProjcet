@@ -63,7 +63,7 @@ public class LoginForm extends BaseFrame {
 
 		loginBt.addActionListener(e -> {
 			ResManager.userId = idTf.getText();
-			ResManager.userPw = idTf.getText();
+			ResManager.userPw = pwTf.getText();
 
 			if (ResManager.userId.isBlank() || ResManager.userPw.isBlank()) {
 				System.out.println("id 또는 pw를 입력하시오");
