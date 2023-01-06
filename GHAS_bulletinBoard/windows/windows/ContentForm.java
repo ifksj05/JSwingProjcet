@@ -21,9 +21,11 @@ public class ContentForm extends BaseFrame {
 	private Vector<Vector<String>> tmpData;
 	private String u_name;
 	private MainForm mainFrame;
+	private Vector<String> contentsData;
 
 	public ContentForm(Vector<String> contentsData, MainForm mainFrame) {
 		this.mainFrame = mainFrame;
+		this.contentsData = contentsData;
 
 		db = new DbManager();
 		this.n_no = contentsData.get(0);
@@ -61,12 +63,17 @@ public class ContentForm extends BaseFrame {
 
 	@Override
 	public void event() {
+
+		updateBt.addActionListener(e -> {
+			new WitingForm("수정", contentsData);
+		});
+
 		deleteBt.addActionListener(e -> {
 
 			System.out.println("u_no : " + u_no);
 			System.out.println("ResManager.userNo : " + ResManager.userNo);
 			if (!u_no.equals(ResManager.userNo)) {
-				System.out.println("로그인 하지 않았습니다.");
+				System.out.println("계정 주인이 아닙니다..");
 				return;
 
 			}
@@ -74,9 +81,9 @@ public class ContentForm extends BaseFrame {
 			db.setData("DELETE FROM `ghas_notice`.`notice` WHERE (`n_no` = ?);", n_no);
 			mainFrame.changeTable();
 			System.out.println("삭제 됐습니다.");
-			
+
 			super.dispose();
-			
+
 		});
 	}
 

@@ -2,6 +2,7 @@ package windows;
 
 import java.awt.Component;
 import java.util.Calendar;
+import java.util.Vector;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -23,10 +24,22 @@ public class WitingForm extends BaseFrame {
 	private BaseBt saveBt;
 	private DbManager db;
 	private MainForm mainForm;
+	private Vector<String> contentForm;
+	private int statusForm = 0;
 
 	public WitingForm(MainForm mainForm) {
+		statusForm = 1;
 		this.mainForm = mainForm;
 		setFrame("글쓰기", 400, 500);
+	}
+
+	public WitingForm(String string, Vector<String> contentsData) {
+		statusForm = 2;
+		this.contentForm = contentsData;
+		setFrame(string, 500, 500);
+		titleTf.setText(contentsData.get(2));
+		contentsTf.setText(contentsData.get(3));
+
 	}
 
 	@Override
@@ -62,26 +75,43 @@ public class WitingForm extends BaseFrame {
 		Calendar time = Calendar.getInstance();
 
 		saveBt.addActionListener(e -> {
-			int year = time.get(Calendar.YEAR);
-			int month = time.get(Calendar.MONTH) + 1;
-			int day = time.get(Calendar.DAY_OF_MONTH);
 
-			String title = titleTf.getText();
-			String contents = contentsTf.getText();
-			String date = year + "-" + month + "-" + day;
+			if (statusForm == 1) { // 글쓰기
+				
+				System.out.println("글 쓰기 이벤트 실행");
+				int year = time.get(Calendar.YEAR);
+				int month = time.get(Calendar.MONTH) + 1;
+				int day = time.get(Calendar.DAY_OF_MONTH);
 
-			System.out.println(date);
+				String title = titleTf.getText();
+				String contents = contentsTf.getText();
+				String date = year + "-" + month + "-" + day;
 
-			db.setData(
-					"INSERT INTO `ghas_notice`.`notice` (`u_no`, `n_title`, `n_contents`, `n_mkdate`) VALUES (?, ?, ?, ?);",
-					ResManager.userNo, title, contents, date);
+				System.out.println(date);
 
-//			((BaseFrame) mainForm).repaint();
+				db.setData(
+						"INSERT INTO `ghas_notice`.`notice` (`u_no`, `n_title`, `n_contents`, `n_mkdate`) VALUES (?, ?, ?, ?);",
+						ResManager.userNo, title, contents, date);
 
-//			왜 새로고침이 안돼죠 ?? ㅜㅜ 
+//				((BaseFrame) mainForm).repaint();
 
-			mainForm.changeTable();
-			super.dispose();
+//				왜 새로고침이 안돼죠 ?? ㅜㅜ 
+				statusForm = 0;
+				mainForm.changeTable();
+				super.dispose();
+			} else if (statusForm == 2) { // 글 수정
+				System.out.println("글 수정 이벤트 실행");
+
+				String title = titleTf.getText();
+				String contents = contentsTf.getText();
+
+				db.setData("UPDATE `ghas_notice`.`notice` SET `n_title` = ?, `n_contents` = ? WHERE (`n_no` = ?);",
+						title, contents, contentForm.get(0));
+
+				statusForm = 0;
+//				mainForm.changeTable();
+//				super.dispose();
+			}
 
 		});
 	}
