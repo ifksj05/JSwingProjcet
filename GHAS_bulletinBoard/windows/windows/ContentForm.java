@@ -43,8 +43,16 @@ public class ContentForm extends BaseFrame {
 
 	@Override
 	public void make() {
+
 		updateBt = new BaseBt("수정");
 		deleteBt = new BaseBt("삭제");
+		
+		if (ResManager.userId.isBlank()) { // 로그인 X일 시
+			updateBt.setEnabled(false);
+			deleteBt.setEnabled(false);
+			
+		}
+		
 	}
 
 	@Override
@@ -85,7 +93,7 @@ public class ContentForm extends BaseFrame {
 			super.dispose();
 
 		});
-		
+
 	}
 
 	public void dataRefresh() {

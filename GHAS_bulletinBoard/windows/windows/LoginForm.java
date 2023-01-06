@@ -99,6 +99,7 @@ public class LoginForm extends BaseFrame {
 			mainForm.statusIsLogin();
 
 			System.out.println("로그인 성공");
+			
 
 			super.dispose();
 

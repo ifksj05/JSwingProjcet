@@ -87,9 +87,9 @@ public class MainForm extends BaseFrame {
 
 	@Override
 	public void event() {
-		
+
 		tableEvent();
-		
+
 		loginBt.addActionListener(e -> {
 
 			new LoginForm(this);
