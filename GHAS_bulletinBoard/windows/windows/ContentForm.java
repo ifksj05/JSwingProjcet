@@ -46,13 +46,14 @@ public class ContentForm extends BaseFrame {
 
 		updateBt = new BaseBt("수정");
 		deleteBt = new BaseBt("삭제");
-		
-		if (ResManager.userId.isBlank()) { // 로그인 X일 시
+
+		// 계정 같지 않으며, 로그인 상태 아닐 시
+		if (!ResManager.userNo.equals(u_no) && ResManager.userNo.isBlank()) {
 			updateBt.setEnabled(false);
 			deleteBt.setEnabled(false);
-			
+
 		}
-		
+
 	}
 
 	@Override

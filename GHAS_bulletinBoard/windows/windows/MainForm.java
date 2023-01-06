@@ -30,6 +30,7 @@ public class MainForm extends BaseFrame {
 	private BaseBt writingBt;
 
 	public MainForm() {
+		ResManager.setUserDataNull();
 		setFrame("게시판", 500, 500);
 	}
 
