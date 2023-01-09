@@ -7,6 +7,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\김성재_공부파일\코딩\JSwingProject"/>
 			<item value="C:\Users\tjdwo\OneDrive\문서\JSwingProjcet"/>
 			<item value="D:\다운로드\2016년도 국제 1차전 종합 자료\선수풀이파일\104\2과제\java"/>
 			<item value="D:\JSwingProject"/>

@@ -5,7 +5,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="calender"/>
+	<classpathentry kind="src" path="studyJTable"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

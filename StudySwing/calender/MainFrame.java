@@ -19,23 +19,23 @@ public class MainFrame extends JFrame {
 
 	public MainFrame() {
 
-		super.setTitle("캘린더");
+		super.setTitle("날짜");
 		super.setSize(500, 500);
 		super.setLayout(new FlowLayout());
 
 		///////////////////////////////////////
 
-		// 생성
+		// �깮�꽦
 		lb = new JLabel("날짜 선택");
 		dateTf = new JTextField(10);
 		dateTf.setText("yyyy-mm-dd");
 		dateTf.setEnabled(false);
 
-		// 추가
+		// 異붽�
 		super.add(lb);
 		super.add(dateTf);
 
-		// 이벤트
+		// �씠踰ㅽ듃
 		mainFrame = this;
 		dateTf.addMouseListener(new MouseAdapter() {
 

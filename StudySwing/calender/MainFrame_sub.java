@@ -40,7 +40,7 @@ public class MainFrame_sub extends JFrame {
 		super.setSize(200, 230);
 		////////////////////////////////////
 
-		// 생성
+		// �깮�꽦
 
 		jl1 = new JLabel("일");
 		jl2 = new JLabel("월");
@@ -48,7 +48,7 @@ public class MainFrame_sub extends JFrame {
 		jl4 = new JLabel("수");
 		jl5 = new JLabel("목");
 		jl6 = new JLabel("금");
-		jl7 = new JLabel("토");
+		jl7 = new JLabel("일");
 
 		top = new JPanel();
 		top.setLayout(new BorderLayout());
@@ -57,16 +57,16 @@ public class MainFrame_sub extends JFrame {
 
 		cl = Calendar.getInstance();
 
-		// 현재 날짜
+		// �쁽�옱 �궇吏�
 		year = cl.get(Calendar.YEAR);
 		month = cl.get(Calendar.MONTH);
 		day = cl.get(Calendar.DAY_OF_MONTH);
 
-		// 현재 날짜 2023 0 8
+		// �쁽�옱 �궇吏� 2023 0 8
 		setDate(year, month, day);
 
-		System.out.println(month + 1 + "월 시작 위치 : " + firstDay(year, month));
-		System.out.println(month + 1 + "월 끝 위치 : " + lastDay(year, month));
+		System.out.println(month + 1 + "월 시작 일 : " + getFirstDay(year, month));
+		System.out.println(month + 1 + "월 크기 : " + getMonthSize(year, month));
 		ym = year + " / " + month + 1;
 
 		center_top = new JPanel();
@@ -79,7 +79,7 @@ public class MainFrame_sub extends JFrame {
 		lb.setHorizontalAlignment(JLabel.CENTER);
 		up = new JButton(">");
 
-		// 추가
+		// 異붽�
 		top.add(down, BorderLayout.WEST);
 		top.add(lb, BorderLayout.CENTER);
 		top.add(up, BorderLayout.EAST);
@@ -105,20 +105,35 @@ public class MainFrame_sub extends JFrame {
 		super.add(top, BorderLayout.NORTH);
 		super.add(center, BorderLayout.CENTER);
 
-		// 이벤트
+		// �씠踰ㅽ듃
+		addButton();
 
-		tmp = new JPanel();
-		for (int i = 0; i < firstDay(year, month); i++) {
-			center_center.add(tmp);
-		}
-		btArr = new Vector<BaseBt>();
-		for (int i = 0; i <= lastDay(year, month); i++) {
-			btArr.add(new BaseBt(i + 1 + ""));
-		}
-		for (int i = 0; i <= lastDay(year, month); i++) {
-			center_center.add(btArr.get(i));
-		}
-//		center_center
+		up.addActionListener(e -> {
+
+			month += 1;
+			System.out.println(month);
+			setDate(year, month, day);
+			ym = year + " / " + (month + 1);
+			lb.setText(ym);
+			
+			center_center.removeAll();
+			addButton();
+			super.repaint();
+			super.validate();
+
+		});
+		down.addActionListener(e -> {
+			
+			month -= 1;
+			setDate(year, month, day);
+			ym = year + " / " + (month + 1);
+			lb.setText(ym);
+			center_center.removeAll();
+			addButton();
+			super.repaint();
+			super.validate();
+
+		});
 
 		////////////////////////////////////
 		super.setVisible(true);
@@ -126,7 +141,28 @@ public class MainFrame_sub extends JFrame {
 
 	}
 
+	public void addButton() {
+		for (int i = 0; i < getFirstDay(year, month) - 1; i++) {
+			center_center.add(new JLabel(""));
+		}
+		btArr = new Vector<BaseBt>();
+		for (int i = 0; i < getMonthSize(year, month); i++) {
+			int tmps = i;
+			btArr.add(new BaseBt(i + 1 + ""));
+			btArr.get(tmps).addActionListener(e -> {
+				System.out.println(btArr.get(tmps).getText());
+			});
+		}
+		for (int i = 0; i < getMonthSize(year, month); i++) {
+			center_center.add(btArr.get(i));
+		}
+		for (int i = 0; i < 42 - (getMonthSize(year, month) + getFirstDay(year, month)); i++) {
+			center_center.add(new JLabel(""));
+		}
+	}
+
 	public void setDate(int year, int mon, int day) {
+
 		cl.set(year, mon, day);
 
 		this.year = cl.get(Calendar.YEAR);
@@ -134,7 +170,7 @@ public class MainFrame_sub extends JFrame {
 		this.day = cl.get(Calendar.DAY_OF_MONTH);
 	}
 
-	public int firstDay(int year, int mon) {
+	public int getFirstDay(int year, int mon) {
 		int num;
 		cl.set(year, mon, 1);
 
@@ -143,7 +179,7 @@ public class MainFrame_sub extends JFrame {
 		return num;
 	}
 
-	public int lastDay(int year, int mon) {
+	public int getMonthSize(int year, int mon) {
 		int num;
 		cl.set(year, mon, 1);
 
