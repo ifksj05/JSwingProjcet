@@ -37,7 +37,7 @@ public class MainFrame_sub extends JFrame {
 		this.mainFrame = mainFrame;
 
 		super.setTitle("날짜 선택");
-		super.setSize(200, 230);
+		super.setSize(500, 500);
 		////////////////////////////////////
 
 		// �깮�꽦
@@ -115,7 +115,7 @@ public class MainFrame_sub extends JFrame {
 			setDate(year, month, day);
 			ym = year + " / " + (month + 1);
 			lb.setText(ym);
-			
+
 			center_center.removeAll();
 			addButton();
 			super.repaint();
@@ -123,7 +123,7 @@ public class MainFrame_sub extends JFrame {
 
 		});
 		down.addActionListener(e -> {
-			
+
 			month -= 1;
 			setDate(year, month, day);
 			ym = year + " / " + (month + 1);
@@ -151,6 +151,12 @@ public class MainFrame_sub extends JFrame {
 			btArr.add(new BaseBt(i + 1 + ""));
 			btArr.get(tmps).addActionListener(e -> {
 				System.out.println(btArr.get(tmps).getText());
+
+				setDate(year, month, Integer.parseInt(btArr.get(tmps).getText()));
+				mainFrame.setDateTf(year + "/" + (month + 1) + "/" + day);
+
+				super.dispose();
+
 			});
 		}
 		for (int i = 0; i < getMonthSize(year, month); i++) {

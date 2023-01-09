@@ -55,6 +55,8 @@ public class MainFrame extends JFrame {
 
 	public void setDateTf(String txt) {
 		this.dateTf.setText(txt);
+		super.repaint();
+		super.validate();
 	}
 
 }
