@@ -31,6 +31,7 @@ public class MainForm extends BaseFrame {
 	private BaseJP jpstateLogout;
 	private BaseJB jbLogout;
 	private BaseJB jbWriting;
+	private MainForm mainForm;
 
 	public MainForm() {
 		setFrame("메인 창", 500, 350);
@@ -84,7 +85,7 @@ public class MainForm extends BaseFrame {
 	@Override
 	public void event() {
 
-		MainForm mainForm = this;
+		mainForm = this;
 
 		jbLogin.addActionListener(e -> {
 			new LoginForm(this);
@@ -92,30 +93,6 @@ public class MainForm extends BaseFrame {
 
 		jbSignup.addActionListener(e -> {
 			new SignupForm();
-		});
-
-		jtNotice.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				Vector<String> tmp = new Vector<>();
-
-//				System.out.println(jtNotice.getRowCount());
-//				System.out.println("번호는 " + jtNotice.getValueAt(jtNotice.getRowCount() - 1, 0));
-
-				for (int i = 0; i < 5; i++) {
-					tmp.add((String) jtNotice.getValueAt(jtNotice.getRowCount() - 1, i));
-					System.out.println(tmp.get(i));
-				}
-
-				if (UserModel.loginState) {
-					new UpdateContentsForm(tmp, mainForm);
-					return;
-				}
-
-				new SelectContentsForm(tmp);
-			}
 		});
 
 		jbLogout.addActionListener(e -> {
@@ -148,6 +125,30 @@ public class MainForm extends BaseFrame {
 		jspNotice = new JScrollPane(jtNotice);
 
 		jpCenter.add(jspNotice);
+
+		jtNotice.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				Vector<String> tmp = new Vector<>();
+
+//				System.out.println(jtNotice.getRowCount());
+//				System.out.println("번호는 " + jtNotice.getValueAt(jtNotice.getRowCount() - 1, 0));
+
+				for (int i = 0; i < 5; i++) {
+					tmp.add((String) jtNotice.getValueAt(jtNotice.getRowCount() - 1, i));
+					System.out.println(tmp.get(i));
+				}
+
+				if (UserModel.loginState) {
+					new UpdateContentsForm(tmp, mainForm);
+					return;
+				}
+
+				new SelectContentsForm(tmp);
+			}
+		});
 
 		super.refresh();
 	}

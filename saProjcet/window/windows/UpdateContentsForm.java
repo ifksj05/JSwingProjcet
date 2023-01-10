@@ -68,6 +68,16 @@ public class UpdateContentsForm extends BaseFrame {
 
 		});
 
+		jbDelete.addActionListener(e -> {
+			String n_no = contentsArr.get(0);
+			db.setDb("DELETE FROM `sa_project`.`notice` WHERE (`n_no` = ?);", n_no);
+
+			msg.info("삭제 성공");
+			mainForm.refreshTable();
+			super.dispose();
+
+		});
+
 		jbClose.addActionListener(e -> {
 			super.dispose();
 		});
