@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import bases.BaseFrame;
 import bases.BaseJB;
 import bases.BaseJL;
+import jdbc.DbManager;
 
 public class MainForm extends BaseFrame {
 
@@ -20,6 +21,7 @@ public class MainForm extends BaseFrame {
 	private Vector<String> colsNotice;
 	private DefaultTableModel dtmNotice;
 	private JScrollPane jspNotice;
+	private DbManager db;
 
 	public MainForm() {
 		setFrame("메인 창", 500, 500);
@@ -27,6 +29,8 @@ public class MainForm extends BaseFrame {
 
 	@Override
 	public void make() {
+
+		db = new DbManager();
 
 		jbLogin = new BaseJB("로그인");
 		jbSignup = new BaseJB("회원가입");
@@ -40,8 +44,8 @@ public class MainForm extends BaseFrame {
 		colsNotice.add("내용");
 		colsNotice.add("날짜");
 
-		// 김 : event 데이터 셋팅 해야 함.
 		dataNotice = new Vector<Vector<String>>();
+		dataNotice = db.getDb("SELECT * FROM sa_project.notice;");
 
 		dtmNotice = new DefaultTableModel(dataNotice, colsNotice);
 		jtNotice = new JTable(dtmNotice);

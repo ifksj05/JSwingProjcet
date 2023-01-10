@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 public class DbManager {
-	private String URL = "jdbc:mysql://localhost/?" + "CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
+	private String URL = "jdbc:mysql://localhost/sa_project?" + "CharacterEncoding=UTF-8&" + "serverTimezone=UTC&"
 			+ "allowPublicKeyRetrieval=true&" + "allowLoadLocalInfile=true&" + "allowMultiQueries=true";
 	private String USER = "root";
 	private String PW = "1234";
