@@ -13,6 +13,7 @@ import bases.BaseJB;
 import bases.BaseJL;
 import bases.BaseJP;
 import jdbc.DbManager;
+import res.UserModel;
 
 public class MainForm extends BaseFrame {
 
@@ -31,7 +32,7 @@ public class MainForm extends BaseFrame {
 	private BaseJB jbWriting;
 
 	public MainForm() {
-		setFrame("메인 창", 500, 500);
+		setFrame("메인 창", 500, 350);
 	}
 
 	@Override
@@ -82,7 +83,8 @@ public class MainForm extends BaseFrame {
 
 		jpTop.jpCenter.jpCenter.add(new BaseJL("GHAS 게시판"));
 
-		refreshLogState(1); // if (1) 로그인; else 로그 아웃;
+		UserModel.loginState = false;
+		refreshLogState();
 
 		jpTop.jpBottom.add(jlWellcome);
 
@@ -104,8 +106,19 @@ public class MainForm extends BaseFrame {
 		jtNotice.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
+				if (UserModel.loginState) {
+					new UpdateContentsForm();
+					return;
+				}
+
 				new SelectContentsForm();
 			}
+		});
+
+		jbLogout.addActionListener(e -> {
+			UserModel.setLogin(false);
+			refreshLogState();
 		});
 
 		jbWriting.addActionListener(e -> {
@@ -114,22 +127,24 @@ public class MainForm extends BaseFrame {
 
 	}
 
-	public void refreshLogState(int state) { // 1 = 로그인 // 0 = 로그인 X
-		if (state == 1) {
-			// 로그인
+	public void refreshLogState() {
+
+		// 로그인
+		if (UserModel.loginState) {
 			jpTop.jpCenter.jpRight.removeAll();
 			jpTop.jpCenter.jpRight.add(jpstateLogin);
 			jlWellcome.setText("님 환영합니다.");
 			super.refresh();
 
-		} else {
-			// 로그 아웃
-			jpTop.jpCenter.jpRight.removeAll();
-			jpTop.jpCenter.jpRight.add(jpstateLogout);
-			jlWellcome.setText("로그인 하세요");
-			super.refresh();
-
+			return;
 		}
+
+		// 로그아웃
+		jpTop.jpCenter.jpRight.removeAll();
+		jpTop.jpCenter.jpRight.add(jpstateLogout);
+		jlWellcome.setText("로그인 하세요");
+		super.refresh();
+
 	}
 
 }

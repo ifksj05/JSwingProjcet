@@ -11,7 +11,7 @@ public class SelectContentsForm extends BaseFrame {
 	private BaseJB jbClose;
 
 	public SelectContentsForm() {
-		setFrame("보기 폼", 500, 500);
+		setFrame("보기 폼", 500, 350);
 	}
 
 	@Override

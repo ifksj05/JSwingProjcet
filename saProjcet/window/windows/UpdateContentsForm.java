@@ -4,17 +4,17 @@ import bases.BaseFrame;
 import bases.BaseJB;
 import bases.BaseJL;
 import bases.BaseTA;
-import bases.BaseTF;
 
-public class InsertContentsForm extends BaseFrame {
+public class UpdateContentsForm extends BaseFrame {
 	private BaseJL jlName;
 	private BaseJL jlWritingDate;
 	private BaseTA jtfContents;
-	private BaseJB jbSave;
+	private BaseJB jbUpdate;
+	private BaseJB jbDelete;
 	private BaseJB jbClose;
 
-	public InsertContentsForm() {
-		setFrame("글쓰기 창", 500, 350);
+	public UpdateContentsForm() {
+		setFrame("수정, 삭제창", 500, 350);
 	}
 
 	@Override
@@ -23,9 +23,9 @@ public class InsertContentsForm extends BaseFrame {
 		jlWritingDate = new BaseJL("작성 날짜 : yyyy-mm-dd");
 		jtfContents = new BaseTA();
 
-		jbSave = new BaseJB("저장");
+		jbUpdate = new BaseJB("수정");
+		jbDelete = new BaseJB("삭제");
 		jbClose = new BaseJB("닫기");
-
 	}
 
 	@Override
@@ -38,7 +38,8 @@ public class InsertContentsForm extends BaseFrame {
 
 		jpBottom.addChild();
 		jpBottom.jpRight.setFlow();
-		jpBottom.jpRight.add(jbSave);
+		jpBottom.jpRight.add(jbUpdate);
+		jpBottom.jpRight.add(jbDelete);
 		jpBottom.jpRight.add(jbClose);
 
 	}
