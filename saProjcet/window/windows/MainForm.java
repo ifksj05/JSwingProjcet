@@ -40,7 +40,7 @@ public class MainForm extends BaseFrame {
 		colsNotice.add("내용");
 		colsNotice.add("날짜");
 
-		// event 데이터 셋팅 해야 함.
+		// 김 : event 데이터 셋팅 해야 함.
 		dataNotice = new Vector<Vector<String>>();
 
 		dtmNotice = new DefaultTableModel(dataNotice, colsNotice);
@@ -51,6 +51,8 @@ public class MainForm extends BaseFrame {
 	@Override
 	public void design() {
 
+		// 김 : 여백 설정 해야 함.
+
 		// 상단
 		jpTop.addChild();
 
@@ -58,7 +60,7 @@ public class MainForm extends BaseFrame {
 
 		jpTop.jpCenter.jpCenter.add(new BaseJL("GHAS 게시판"));
 
-		jpTop.jpCenter.jpRight.setGrid(2, 1, 0, 0); // 보더 크기 설정 필요
+		jpTop.jpCenter.jpRight.setGrid(2, 1, 0, 0); // 김 : 보더 크기 설정 필요
 		jpTop.jpCenter.jpRight.add(jbLogin);
 		jpTop.jpCenter.jpRight.add(jbSignup);
 
@@ -71,7 +73,9 @@ public class MainForm extends BaseFrame {
 
 	@Override
 	public void event() {
-
+		jbLogin.addActionListener(e -> {
+			new LoginForm();
+		});
 	}
 
 }
