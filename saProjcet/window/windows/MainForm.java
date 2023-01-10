@@ -97,7 +97,7 @@ public class MainForm extends BaseFrame {
 	@Override
 	public void event() {
 		jbLogin.addActionListener(e -> {
-			new LoginForm();
+			new LoginForm(this);
 		});
 
 		jbSignup.addActionListener(e -> {
@@ -128,7 +128,7 @@ public class MainForm extends BaseFrame {
 		});
 
 		jbLogout.addActionListener(e -> {
-			UserModel.setLogin(false);
+			UserModel.setLog(false);
 			refreshLogState();
 		});
 
@@ -144,7 +144,7 @@ public class MainForm extends BaseFrame {
 		if (UserModel.loginState) {
 			jpTop.jpCenter.jpRight.removeAll();
 			jpTop.jpCenter.jpRight.add(jpstateLogin);
-			jlWellcome.setText("님 환영합니다.");
+			jlWellcome.setText(UserModel.u_name + "님 환영합니다.");
 			super.refresh();
 
 			return;

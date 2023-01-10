@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import model.msg;
+
 public class Setting {
 
 //	public static void main(String[] args) {
@@ -53,6 +55,8 @@ public class Setting {
 				+ "    ON DELETE NO ACTION\r\n" + "    ON UPDATE NO ACTION)\r\n" + "ENGINE = InnoDB;\r\n" + "\r\n"
 				+ "\r\n" + "SET SQL_MODE=@OLD_SQL_MODE;\r\n" + "SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;\r\n"
 				+ "SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;\r\n" + "");
+
+		msg.info("셋팅 완료");
 	}
 
 	public int setDb(String sql, Object... values) {
