@@ -76,6 +76,10 @@ public class MainForm extends BaseFrame {
 		jbLogin.addActionListener(e -> {
 			new LoginForm();
 		});
+
+		jbSignup.addActionListener(e -> {
+			new SignupForm();
+		});
 	}
 
 }
