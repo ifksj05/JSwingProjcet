@@ -1,5 +1,7 @@
 package windows;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.JScrollPane;
@@ -84,6 +86,14 @@ public class MainForm extends BaseFrame {
 		jbSignup.addActionListener(e -> {
 			new SignupForm();
 		});
+		
+		jtNotice.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new SelectContentForm();
+			}			
+		});
+		
 	}
 
 }
