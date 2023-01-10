@@ -78,7 +78,7 @@ public class MainForm extends BaseFrame {
 		jpTop.jpBottom.add(jlWellcome);
 
 		// 센털
-		refreshTable();
+		setContentsTable();
 
 	}
 
@@ -101,12 +101,12 @@ public class MainForm extends BaseFrame {
 		});
 
 		jbWriting.addActionListener(e -> {
-			new InsertContentsForm();
+			new InsertContentsForm(this);
 		});
 
 	}
 
-	public void refreshTable() {
+	public void setContentsTable() {
 		jpCenter.removeAll();
 
 		colsNotice = new Vector<String>();

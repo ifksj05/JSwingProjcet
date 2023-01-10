@@ -63,7 +63,7 @@ public class UpdateContentsForm extends BaseFrame {
 			db.setDb("UPDATE `sa_project`.`notice` SET `n_contents` = ? WHERE (`n_no` = ?);", contents, n_no);
 
 			msg.info("수정 성공");
-			mainForm.refreshTable();
+			mainForm.setContentsTable();
 			super.dispose();
 
 		});
@@ -73,7 +73,7 @@ public class UpdateContentsForm extends BaseFrame {
 			db.setDb("DELETE FROM `sa_project`.`notice` WHERE (`n_no` = ?);", n_no);
 
 			msg.info("삭제 성공");
-			mainForm.refreshTable();
+			mainForm.setContentsTable();
 			super.dispose();
 
 		});
