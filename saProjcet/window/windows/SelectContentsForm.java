@@ -4,13 +4,13 @@ import bases.BaseFrame;
 import bases.BaseJB;
 import bases.BaseJL;
 
-public class SelectContentForm extends BaseFrame {
+public class SelectContentsForm extends BaseFrame {
 	private BaseJL jlName;
 	private BaseJL jlWritingDate;
 	private BaseJL jlContents;
 	private BaseJB jbClose;
 
-	public SelectContentForm() {
+	public SelectContentsForm() {
 		setFrame("보기 폼", 500, 500);
 	}
 

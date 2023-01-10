@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import bases.BaseFrame;
 import bases.BaseJB;
 import bases.BaseJL;
+import bases.BaseJP;
 import jdbc.DbManager;
 
 public class MainForm extends BaseFrame {
@@ -24,6 +25,10 @@ public class MainForm extends BaseFrame {
 	private DefaultTableModel dtmNotice;
 	private JScrollPane jspNotice;
 	private DbManager db;
+	private BaseJP jpstateLogin;
+	private BaseJP jpstateLogout;
+	private BaseJB jbLogout;
+	private BaseJB jbWriting;
 
 	public MainForm() {
 		setFrame("메인 창", 500, 500);
@@ -36,6 +41,17 @@ public class MainForm extends BaseFrame {
 
 		jbLogin = new BaseJB("로그인");
 		jbSignup = new BaseJB("회원가입");
+		jpstateLogout = new BaseJP();
+		jpstateLogout.setGrid(2, 1, 0, 0);
+		jpstateLogout.add(jbLogin);
+		jpstateLogout.add(jbSignup);
+
+		jbLogout = new BaseJB("로그아웃");
+		jbWriting = new BaseJB("글쓰기");
+		jpstateLogin = new BaseJP();
+		jpstateLogin.setGrid(2, 1, 0, 0);
+		jpstateLogin.add(jbLogout);
+		jpstateLogin.add(jbWriting);
 
 		jlWellcome = new BaseJL("로그인 하세요");
 
@@ -66,9 +82,7 @@ public class MainForm extends BaseFrame {
 
 		jpTop.jpCenter.jpCenter.add(new BaseJL("GHAS 게시판"));
 
-		jpTop.jpCenter.jpRight.setGrid(2, 1, 0, 0); // 김 : 보더 크기 설정 필요
-		jpTop.jpCenter.jpRight.add(jbLogin);
-		jpTop.jpCenter.jpRight.add(jbSignup);
+		refreshLogState(1); // if (1) 로그인; else 로그 아웃;
 
 		jpTop.jpBottom.add(jlWellcome);
 
@@ -86,14 +100,36 @@ public class MainForm extends BaseFrame {
 		jbSignup.addActionListener(e -> {
 			new SignupForm();
 		});
-		
+
 		jtNotice.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new SelectContentForm();
-			}			
+				new SelectContentsForm();
+			}
 		});
-		
+
+		jbWriting.addActionListener(e -> {
+			new InsertContentsForm();
+		});
+
+	}
+
+	public void refreshLogState(int state) { // 1 = 로그인 // 0 = 로그인 X
+		if (state == 1) {
+			// 로그인
+			jpTop.jpCenter.jpRight.removeAll();
+			jpTop.jpCenter.jpRight.add(jpstateLogin);
+			jlWellcome.setText("님 환영합니다.");
+			super.refresh();
+
+		} else {
+			// 로그 아웃
+			jpTop.jpCenter.jpRight.removeAll();
+			jpTop.jpCenter.jpRight.add(jpstateLogout);
+			jlWellcome.setText("로그인 하세요");
+			super.refresh();
+
+		}
 	}
 
 }

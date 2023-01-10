@@ -45,4 +45,9 @@ public abstract class BaseFrame extends JFrame implements BaseI {
 
 	}
 
+	public void refresh() {
+		super.repaint();
+		super.validate();
+	}
+
 }

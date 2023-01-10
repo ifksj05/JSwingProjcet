@@ -1,6 +1,7 @@
 package bases;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
@@ -37,9 +38,16 @@ public class BaseJP extends JPanel {
 	}
 
 	public BaseJP setGrid(int rows, int cols, int hgap, int vgap) {
-		
+
 		super.setLayout(new GridLayout(rows, cols, hgap, vgap));
-		
+
+		return this;
+
+	}
+
+	public BaseJP setFlow() {
+		super.setLayout(new FlowLayout());
+
 		return this;
 
 	}
