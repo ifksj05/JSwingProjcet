@@ -2,6 +2,7 @@ package windows;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.JScrollPane;
@@ -56,20 +57,6 @@ public class MainForm extends BaseFrame {
 
 		jlWellcome = new BaseJL("로그인 하세요");
 
-		colsNotice = new Vector<String>();
-		colsNotice.add("번호");
-		colsNotice.add("닉네임");
-		colsNotice.add("제목");
-		colsNotice.add("내용");
-		colsNotice.add("날짜");
-
-		dataNotice = new Vector<Vector<String>>();
-		dataNotice = db.getDb("SELECT n_no, u_name, n_title, n_contents, n_date FROM user join notice\r\n"
-				+ "	on user.u_no = notice.u_no\r\n" + ";");
-
-		dtmNotice = new DefaultTableModel(dataNotice, colsNotice);
-		jtNotice = new JTable(dtmNotice);
-		jspNotice = new JScrollPane(jtNotice);
 	}
 
 	@Override
@@ -90,12 +77,15 @@ public class MainForm extends BaseFrame {
 		jpTop.jpBottom.add(jlWellcome);
 
 		// 센털
-		jpCenter.add(jspNotice);
+		refreshTable();
 
 	}
 
 	@Override
 	public void event() {
+
+		MainForm mainForm = this;
+
 		jbLogin.addActionListener(e -> {
 			new LoginForm(this);
 		});
@@ -105,6 +95,7 @@ public class MainForm extends BaseFrame {
 		});
 
 		jtNotice.addMouseListener(new MouseAdapter() {
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
@@ -119,7 +110,7 @@ public class MainForm extends BaseFrame {
 				}
 
 				if (UserModel.loginState) {
-					new UpdateContentsForm();
+					new UpdateContentsForm(tmp, mainForm);
 					return;
 				}
 
@@ -136,6 +127,29 @@ public class MainForm extends BaseFrame {
 			new InsertContentsForm();
 		});
 
+	}
+
+	public void refreshTable() {
+		jpCenter.removeAll();
+
+		colsNotice = new Vector<String>();
+		colsNotice.add("번호");
+		colsNotice.add("닉네임");
+		colsNotice.add("제목");
+		colsNotice.add("내용");
+		colsNotice.add("날짜");
+
+		dataNotice = new Vector<Vector<String>>();
+		dataNotice = db.getDb("SELECT n_no, u_name, n_title, n_contents, n_date FROM user join notice\r\n"
+				+ "	on user.u_no = notice.u_no\r\n" + ";");
+
+		dtmNotice = new DefaultTableModel(dataNotice, colsNotice);
+		jtNotice = new JTable(dtmNotice);
+		jspNotice = new JScrollPane(jtNotice);
+
+		jpCenter.add(jspNotice);
+
+		super.refresh();
 	}
 
 	public void refreshLogState() {
