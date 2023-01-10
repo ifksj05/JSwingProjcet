@@ -1,4 +1,4 @@
-package res;
+package model;
 
 public class UserModel {
 	public static boolean loginState; // 로그인 true 로그아웃 false

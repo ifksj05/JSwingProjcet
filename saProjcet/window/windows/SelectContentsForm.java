@@ -1,5 +1,7 @@
 package windows;
 
+import java.util.Vector;
+
 import bases.BaseFrame;
 import bases.BaseJB;
 import bases.BaseJL;
@@ -9,16 +11,18 @@ public class SelectContentsForm extends BaseFrame {
 	private BaseJL jlWritingDate;
 	private BaseJL jlContents;
 	private BaseJB jbClose;
+	private Vector<String> contentsArr;
 
-	public SelectContentsForm() {
-		setFrame("보기 폼", 500, 350);
+	public SelectContentsForm(Vector<String> contentsArr) {
+		this.contentsArr = contentsArr;
+		setFrame(contentsArr.get(2), 500, 350);
 	}
 
 	@Override
 	public void make() {
-		jlName = new BaseJL("작성자 : name");
-		jlWritingDate = new BaseJL("작성 날짜 : yyyy-mm-dd");
-		jlContents = new BaseJL("contents");
+		jlName = new BaseJL("작성자 : " + contentsArr.get(1));
+		jlWritingDate = new BaseJL("작성 날짜 : " + contentsArr.get(4));
+		jlContents = new BaseJL(contentsArr.get(3));
 
 		jbClose = new BaseJB("닫기");
 

@@ -13,7 +13,7 @@ import bases.BaseJB;
 import bases.BaseJL;
 import bases.BaseJP;
 import jdbc.DbManager;
-import res.UserModel;
+import model.UserModel;
 
 public class MainForm extends BaseFrame {
 
@@ -64,7 +64,8 @@ public class MainForm extends BaseFrame {
 		colsNotice.add("날짜");
 
 		dataNotice = new Vector<Vector<String>>();
-		dataNotice = db.getDb("SELECT * FROM sa_project.notice;");
+		dataNotice = db.getDb("SELECT n_no, u_name, n_title, n_contents, n_date FROM user join notice\r\n"
+				+ "	on user.u_no = notice.u_no\r\n" + ";");
 
 		dtmNotice = new DefaultTableModel(dataNotice, colsNotice);
 		jtNotice = new JTable(dtmNotice);
@@ -107,12 +108,22 @@ public class MainForm extends BaseFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
+				Vector<String> tmp = new Vector<>();
+
+//				System.out.println(jtNotice.getRowCount());
+//				System.out.println("번호는 " + jtNotice.getValueAt(jtNotice.getRowCount() - 1, 0));
+
+				for (int i = 0; i < 5; i++) {
+					tmp.add((String) jtNotice.getValueAt(jtNotice.getRowCount() - 1, i));
+					System.out.println(tmp.get(i));
+				}
+
 				if (UserModel.loginState) {
 					new UpdateContentsForm();
 					return;
 				}
 
-				new SelectContentsForm();
+				new SelectContentsForm(tmp);
 			}
 		});
 
