@@ -45,18 +45,18 @@ public class MainForm extends BaseFrame {
 		jbLogin = new BaseJB("로그인");
 		jbSignup = new BaseJB("회원가입");
 		jpstateLogout = new BaseJP();
-		jpstateLogout.setGrid(2, 1, 0, 0);
+		jpstateLogout.setGrid(2, 1, 0, 5);
 		jpstateLogout.add(jbLogin);
 		jpstateLogout.add(jbSignup);
 
 		jbLogout = new BaseJB("로그아웃");
 		jbWriting = new BaseJB("글쓰기");
 		jpstateLogin = new BaseJP();
-		jpstateLogin.setGrid(2, 1, 0, 0);
+		jpstateLogin.setGrid(2, 1, 0, 5);
 		jpstateLogin.add(jbLogout);
 		jpstateLogin.add(jbWriting);
 
-		jlWellcome = new BaseJL("로그인 하세요");
+		jlWellcome = new BaseJL("로그인 하세요").setFont(15);
 
 	}
 
@@ -70,7 +70,7 @@ public class MainForm extends BaseFrame {
 
 		jpTop.jpCenter.addChild();
 
-		jpTop.jpCenter.jpCenter.add(new BaseJL("GHAS 게시판"));
+		jpTop.jpCenter.jpCenter.add(new BaseJL("GHAS 게시판").setFont(25));
 
 		UserModel.loginState = false;
 		refreshLogState();

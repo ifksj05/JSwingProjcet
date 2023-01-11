@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 public class BaseJP extends JPanel {
 
@@ -47,6 +48,14 @@ public class BaseJP extends JPanel {
 
 	public BaseJP setFlow() {
 		super.setLayout(new FlowLayout());
+
+		return this;
+
+	}
+
+	public BaseJP setBoder(int top, int left, int bottom, int right) {
+
+		super.setBorder(new EmptyBorder(top, left, bottom, right));
 
 		return this;
 
