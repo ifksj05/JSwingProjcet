@@ -18,7 +18,7 @@ public class SignupForm extends BaseFrame {
 	private DbManager db;
 
 	public SignupForm() {
-		setFrame("회원가입 폼", 250, 400);
+		setFrame("회원가입 폼", 250, 350);
 	}
 
 	@Override
@@ -36,22 +36,25 @@ public class SignupForm extends BaseFrame {
 	public void design() {
 
 		// 김 : 여백 설정 필요 ( 판낼, 그리드 )
-
+		
+		jpMain.setBorder(70, 10, 70, 10);
 		jpCenter.addChild();
+		jpCenter.setBorder(0, 0, 20, 0);
 
-		jpCenter.jpLeft.setGrid(4, 1, 0, 0);
+		jpCenter.jpLeft.setGrid(4, 1, 0, 10);
 		jpCenter.jpLeft.add(new BaseJL("아이디"));
 		jpCenter.jpLeft.add(new BaseJL("닉네임"));
 		jpCenter.jpLeft.add(new BaseJL("비밀번호"));
 		jpCenter.jpLeft.add(new BaseJL("비밀번호 확인"));
-
-		jpCenter.jpCenter.setGrid(4, 1, 0, 0);
+		
+		jpCenter.jpCenter.setBorder(0, 10, 0, 0);
+		jpCenter.jpCenter.setGrid(4, 1, 0, 10);
 		jpCenter.jpCenter.add(jtfId);
 		jpCenter.jpCenter.add(jtfName);
 		jpCenter.jpCenter.add(jtfPw);
 		jpCenter.jpCenter.add(jtfPwCheck);
-
-		jpCenter.jpBottom.add(jbSignup);
+		
+		jpBottom.add(jbSignup);
 
 	}
 
