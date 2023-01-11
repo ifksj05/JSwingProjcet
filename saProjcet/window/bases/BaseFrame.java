@@ -19,7 +19,7 @@ public abstract class BaseFrame extends JFrame implements BaseI {
 		super.setSize(width, height);
 
 		jpMain = new BaseJP();
-		jpMain.setBoder(10, 10, 10, 10);
+		jpMain.setBorder(10, 10, 10, 10);
 
 		jpTop = new BaseJP();
 		jpLeft = new BaseJP();

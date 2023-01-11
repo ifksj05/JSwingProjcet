@@ -39,12 +39,13 @@ public class LoginForm extends BaseFrame {
 		// 김 : 여백 설정 해야 함.
 
 		jpCenter.addChild();
-
-		jpCenter.jpLeft.setGrid(2, 1, 0, 0); // 김 : 여백 설정 필요
+		jpCenter.setBorder(0, 0, 10, 0);
+		jpCenter.jpCenter.setBorder(0, 10, 0, 0);
+		jpCenter.jpLeft.setGrid(2, 1, 0, 10); // 김 : 여백 설정 필요
 		jpCenter.jpLeft.add(new BaseJL("아이디"));
 		jpCenter.jpLeft.add(new BaseJL("비밀번호"));
 
-		jpCenter.jpCenter.setGrid(2, 1, 0, 0); // 김 : 여백 설정 필요
+		jpCenter.jpCenter.setGrid(2, 1, 0, 10); // 김 : 여백 설정 필요
 		jpCenter.jpCenter.add(jtfId);
 		jpCenter.jpCenter.add(jtfPw);
 
@@ -73,12 +74,12 @@ public class LoginForm extends BaseFrame {
 			}
 
 			msg.info("로그인 성공");
-			
+
 			UserModel.u_no = userData.get(0).get(0);
 			UserModel.u_id = userData.get(0).get(1);
 			UserModel.u_name = userData.get(0).get(2);
 			UserModel.u_pw = userData.get(0).get(3);
-			
+
 			UserModel.setLog(true);
 			mainForm.refreshLogState();
 			super.dispose();

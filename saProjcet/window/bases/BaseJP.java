@@ -53,7 +53,7 @@ public class BaseJP extends JPanel {
 
 	}
 
-	public BaseJP setBoder(int top, int left, int bottom, int right) {
+	public BaseJP setBorder(int top, int left, int bottom, int right) {
 
 		super.setBorder(new EmptyBorder(top, left, bottom, right));
 
