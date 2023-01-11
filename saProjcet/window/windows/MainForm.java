@@ -133,11 +133,11 @@ public class MainForm extends BaseFrame {
 
 				Vector<String> tmp = new Vector<>();
 
-//				System.out.println(jtNotice.getRowCount());
+				System.out.println(jtNotice.getSelectedRow());
 //				System.out.println("번호는 " + jtNotice.getValueAt(jtNotice.getRowCount() - 1, 0));
 
 				for (int i = 0; i < 5; i++) {
-					tmp.add((String) jtNotice.getValueAt(jtNotice.getRowCount() - 1, i));
+					tmp.add((String) jtNotice.getValueAt(jtNotice.getSelectedRow(), i));
 					System.out.println(tmp.get(i));
 				}
 

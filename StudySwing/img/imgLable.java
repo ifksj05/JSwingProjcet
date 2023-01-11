@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.ScrollPane;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,6 +15,8 @@ public class imgLable extends JFrame {
 	public static void main(String[] args) {
 		new imgLable();
 	}
+
+	private int value;
 
 	public imgLable() {
 
@@ -28,17 +31,29 @@ public class imgLable extends JFrame {
 		JLabel jl2 = new JLabel(icon2);
 
 		JPanel jp = new JPanel();
-		jp.setLayout(new GridLayout(1, 3));
+		jp.setLayout(new GridLayout(3, 1));
 
 		jp.add(jl);
 		jp.add(jl1);
 		jp.add(jl2);
 
 //		ScrollPane jsp = new ScrollPane();
-		JScrollPane jsp = new JScrollPane();
-		jsp.add(jp);
+//		JScrollPane jsp = new JScrollPane();
+		JScrollPane jsp = new JScrollPane(jp, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+//		jsp.add(jp);
+//		jsp.setViewportView(jp);
+
+		JButton jb = new JButton("이벤트");
+
+		jb.addActionListener(e -> {
+			
+			jsp.getVerticalScrollBar().setValue(value += 10);
+
+		});
 
 		super.add(jsp, BorderLayout.CENTER);
+		super.add(jb, BorderLayout.SOUTH);
 
 		super.setVisible(true);
 		super.setSize(500, 500);
