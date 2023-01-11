@@ -38,8 +38,8 @@ public class InsertContentsForm extends BaseFrame {
 
 		today = year + "/" + month + "/" + day;
 
-		jlName = new BaseJL("작성자 : " + UserModel.u_name);
-		jlWritingDate = new BaseJL("작성 날짜 : " + today);
+		jlName = new BaseJL("작성자 : " + UserModel.u_name).setFont(15);
+		jlWritingDate = new BaseJL("작성 날짜 : " + today).setFont(15);
 		jtfTitle = new BaseTF();
 		jtaContents = new BaseTA();
 

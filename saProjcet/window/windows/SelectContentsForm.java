@@ -20,8 +20,8 @@ public class SelectContentsForm extends BaseFrame {
 
 	@Override
 	public void make() {
-		jlName = new BaseJL("작성자 : " + contentsArr.get(1));
-		jlWritingDate = new BaseJL("작성 날짜 : " + contentsArr.get(4));
+		jlName = new BaseJL("작성자 : " + contentsArr.get(1)).setFont(15);
+		jlWritingDate = new BaseJL("작성 날짜 : " + contentsArr.get(4)).setFont(15);
 		jlContents = new BaseJL(contentsArr.get(3));
 
 		jbClose = new BaseJB("닫기");
