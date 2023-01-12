@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.ScrollPane;
@@ -37,27 +38,75 @@ public class imgLable extends JFrame {
 		jp.add(jl1);
 		jp.add(jl2);
 
-//		ScrollPane jsp = new ScrollPane();
-//		JScrollPane jsp = new JScrollPane();
+		JPanel jp2 = new JPanel();
+		jp2.setLayout(new GridLayout(1, 4));
+		JButton front = new JButton("맨 앞으로");
+		JButton last = new JButton("맨 뒤로");
+		JButton plus = new JButton("+10");
+		JButton minus = new JButton("-10");
+		jp2.add(front);
+		jp2.add(last);
+		jp2.add(plus);
+		jp2.add(minus);
+
 		JScrollPane jsp = new JScrollPane(jp, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-//		jsp.add(jp);
-//		jsp.setViewportView(jp);
 
-		JButton jb = new JButton("이벤트");
+		front.addActionListener(e -> {
+			value = 0;
+			jsp.getVerticalScrollBar().setValue(value);
+		});
 
-		jb.addActionListener(e -> {
-			
-			jsp.getVerticalScrollBar().setValue(value += 10);
+		last.addActionListener(e -> {
+			value = jsp.getVerticalScrollBar().getMaximum();
+			jsp.getVerticalScrollBar().setValue(value);
+		});
 
+		plus.addActionListener(e -> {
+			value += 10;
+			jsp.getVerticalScrollBar().setValue(value);
+		});
+
+		minus.addActionListener(e -> {
+			value -= 10;
+			jsp.getVerticalScrollBar().setValue(value);
 		});
 
 		super.add(jsp, BorderLayout.CENTER);
-		super.add(jb, BorderLayout.SOUTH);
+		super.add(jp2, BorderLayout.SOUTH);
 
 		super.setVisible(true);
 		super.setSize(500, 500);
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		jsp.getVerticalScrollBar().setValue(768);
+
+		while (true) {
+			try {
+
+				Thread.sleep(100);
+				value += 10;
+				jsp.getVerticalScrollBar().setValue(value);
+				System.out.println("현재 값" + jsp.getVerticalScrollBar().getValue());
+				System.out.println("최대 값" + jsp.getVerticalScrollBar().getMaximum());
+				System.out.println("스크롤바 크기" + jsp.getVerticalScrollBar().getSize());
+
+//				max = 
+
+				if (jsp.getVerticalScrollBar().getValue() == jsp.getVerticalScrollBar().getMaximum() - jsp.getVerticalScrollBar().getSize().height) {
+
+					System.out.println("최대");
+					value = 0;
+					jsp.getVerticalScrollBar().setValue(value);
+				}
+
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+		}
+
 	}
 
 }
