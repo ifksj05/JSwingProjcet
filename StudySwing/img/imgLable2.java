@@ -40,8 +40,8 @@ public class imgLable2 extends JFrame {
 
 		JPanel jp2 = new JPanel();
 		jp2.setLayout(new GridLayout(1, 320));
-		JButton front = new JButton("맨 앞으로");
-		JButton last = new JButton("맨 뒤로");
+		JButton front = new JButton("맨 앞으로 번호");
+		JButton last = new JButton("맨 뒤로 번호");
 		JButton plus = new JButton("+10");
 		JButton minus = new JButton("-10");
 		jp2.add(front);
@@ -52,25 +52,15 @@ public class imgLable2 extends JFrame {
 		JScrollPane jsp = new JScrollPane(jp, JScrollPane.VERTICAL_SCROLLBAR_NEVER,
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-		front.addActionListener(e -> {
-			value = 0;
-			jsp.getHorizontalScrollBar().setValue(value);
-		});
-
-		last.addActionListener(e -> {
-			value = jsp.getHorizontalScrollBar().getMaximum();
-			jsp.getHorizontalScrollBar().setValue(value);
-		});
-
-		plus.addActionListener(e -> {
-			value += 10;
-			jsp.getHorizontalScrollBar().setValue(value);
-		});
-
-		minus.addActionListener(e -> {
-			value -= 10;
-			jsp.getHorizontalScrollBar().setValue(value);
-		});
+//		plus.addActionListener(e -> {
+//			value += 10;
+//			jsp.getHorizontalScrollBar().setValue(value);
+//		});
+//
+//		minus.addActionListener(e -> {
+//			value -= 10;
+//			jsp.getHorizontalScrollBar().setValue(value);
+//		});
 
 		super.add(jsp, BorderLayout.CENTER);
 		super.add(jp2, BorderLayout.SOUTH);
@@ -81,25 +71,48 @@ public class imgLable2 extends JFrame {
 
 		jsp.getHorizontalScrollBar().setValue(768);
 
+		front.addActionListener(e -> {
+			
+			for (int i = 1; i <= 100; i++) {
+				System.out.println(i + "번");
+				for (int i1 = 0; i1 < 100000000; i1++)
+					;
+			}
+			
+//				value = 0;
+//				jsp.getHorizontalScrollBar().setValue(value);
+		});
+		
+		last.addActionListener(e -> {
+			for (int i = 100; i >= 1; i--) {
+				System.out.println(i + "번");
+			}
+			
+//				value = jsp.getHorizontalScrollBar().getMaximum();
+//				jsp.getHorizontalScrollBar().setValue(value);
+		});
 		while (true) {
+
 
 //				Thread.sleep(100);
 
-			for (int i = 0; i < 100000000; i++);
-			for (int i = 0; i < 100000000; i++);
+			for (int i = 0; i < 100000000; i++)
+				;
+			for (int i = 0; i < 100000000; i++)
+				;
 
 			value += 10;
 			jsp.getHorizontalScrollBar().setValue(value);
-			System.out.println("현재 값" + jsp.getHorizontalScrollBar().getValue());
-			System.out.println("최대 값" + jsp.getHorizontalScrollBar().getMaximum());
-			System.out.println("스크롤바 크기" + jsp.getHorizontalScrollBar().getSize());
+//			System.out.println("현재 값" + jsp.getHorizontalScrollBar().getValue());
+//			System.out.println("최대 값" + jsp.getHorizontalScrollBar().getMaximum());
+//			System.out.println("스크롤바 크기" + jsp.getHorizontalScrollBar().getSize());
 
 //				max = 
 
 			if (jsp.getHorizontalScrollBar().getValue() >= jsp.getHorizontalScrollBar().getMaximum()
 					- jsp.getHorizontalScrollBar().getSize().width) {
 
-				System.out.println("최대");
+//				System.out.println("최대");
 				value = 0;
 				jsp.getHorizontalScrollBar().setValue(value);
 			}
