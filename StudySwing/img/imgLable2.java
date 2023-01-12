@@ -11,15 +11,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class imgLable extends JFrame {
+public class imgLable2 extends JFrame {
 
 	public static void main(String[] args) {
-		new imgLable();
+		new imgLable2();
 	}
 
 	private int value;
 
-	public imgLable() {
+	public imgLable2() {
 
 		ImageIcon icon = new ImageIcon(
 				new ImageIcon("./image/1.jpg").getImage().getScaledInstance(500, 400, Image.SCALE_DEFAULT));
@@ -39,7 +39,7 @@ public class imgLable extends JFrame {
 		jp.add(jl2);
 
 		JPanel jp2 = new JPanel();
-		jp2.setLayout(new GridLayout(1, 320	));
+		jp2.setLayout(new GridLayout(1, 320));
 		JButton front = new JButton("맨 앞으로");
 		JButton last = new JButton("맨 뒤로");
 		JButton plus = new JButton("+10");
@@ -82,28 +82,26 @@ public class imgLable extends JFrame {
 		jsp.getHorizontalScrollBar().setValue(768);
 
 		while (true) {
-			try {
 
-				Thread.sleep(100);
-				value += 10;
-				jsp.getHorizontalScrollBar().setValue(value);
-				System.out.println("현재 값" + jsp.getHorizontalScrollBar().getValue());
-				System.out.println("최대 값" + jsp.getHorizontalScrollBar().getMaximum());
-				System.out.println("스크롤바 크기" + jsp.getHorizontalScrollBar().getSize());
+//				Thread.sleep(100);
+
+			for (int i = 0; i < 100000000; i++);
+			for (int i = 0; i < 100000000; i++);
+
+			value += 10;
+			jsp.getHorizontalScrollBar().setValue(value);
+			System.out.println("현재 값" + jsp.getHorizontalScrollBar().getValue());
+			System.out.println("최대 값" + jsp.getHorizontalScrollBar().getMaximum());
+			System.out.println("스크롤바 크기" + jsp.getHorizontalScrollBar().getSize());
 
 //				max = 
 
-				if (jsp.getHorizontalScrollBar().getValue() == jsp.getHorizontalScrollBar().getMaximum()
-						- jsp.getHorizontalScrollBar().getSize().height) {
+			if (jsp.getHorizontalScrollBar().getValue() >= jsp.getHorizontalScrollBar().getMaximum()
+					- jsp.getHorizontalScrollBar().getSize().width) {
 
-					System.out.println("최대");
-					value = 0;
-					jsp.getHorizontalScrollBar().setValue(value);
-				}
-
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("최대");
+				value = 0;
+				jsp.getHorizontalScrollBar().setValue(value);
 			}
 
 		}
