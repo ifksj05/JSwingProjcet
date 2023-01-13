@@ -1,9 +1,13 @@
 import java.awt.Image;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.awt.event.WindowStateListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
+import bases.BaseBT;
 import bases.BaseFrame;
 import bases.BaseJL;
 import bases.BaseJP;
@@ -16,14 +20,17 @@ public class 쓰레드반복문스크롤이동 extends BaseFrame {
 
 	private BaseJP jpImg;
 	private JScrollPane jscImg;
-	private BaseBt jbStop;
-	private BaseBt jbStart;
-	private Runnable rScrollUp;
+	private BaseBT jbStop;
+	private BaseBT jbStart;
+	private Runnable rScrollStart;
 	private Runnable rNumUp;
-	private Thread tScrollUp;
+	private Thread tScrollStart;
 	private Runnable rNumDown;
 	private Thread tNumUp;
 	private Thread tNumDown;
+	private Runnable rScrollStop;
+	private int scrollvalue = 0;
+	private boolean rScrollStartBoolen = false;
 
 	public 쓰레드반복문스크롤이동() {
 		setFrame("쓰레드, 스크롤 공부", 500, 404);
@@ -41,8 +48,8 @@ public class 쓰레드반복문스크롤이동 extends BaseFrame {
 
 		jscImg = new JScrollPane(jpImg);
 
-		jbStop = new BaseBt("멈춤");
-		jbStart = new BaseBt("실행");
+		jbStop = new BaseBT("멈춤");
+		jbStart = new BaseBT("실행");
 
 	}
 
@@ -60,32 +67,73 @@ public class 쓰레드반복문스크롤이동 extends BaseFrame {
 	public void event() {
 
 		runable();
-		tScrollUp.start();
 
 		jbStart.addActionListener(e -> {
-//			tScrollUp.start();
-			tNumUp.start();
+			rScrollStartBoolen = true;
+			runable();
 		});
 
 		jbStop.addActionListener(e -> {
-			tNumDown.start();
+			rScrollStartBoolen = false;
+		});
 
+		super.addWindowListener(new WindowListener() {
+
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void windowClosed(WindowEvent e) {
+				// TODO Auto-generated method stub
+				rScrollStartBoolen = false;
+			}
+
+			@Override
+			public void windowActivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+
+			}
 		});
 
 	}
 
 	private void runable() {
 
-		rScrollUp = new Runnable() {
-
-			private int scrollvalue = 0;
+		rScrollStart = new Runnable() {
 
 			@Override
 			public void run() {
 
 				System.out.println("rScrollUp Run 실행");
 
-				while (true) {
+				while (rScrollStartBoolen) {
 
 					// if : 스크롤 값이 최대라면 처음으로 이동하라
 					if (jscImg.getHorizontalScrollBar().getValue() == jscImg.getHorizontalScrollBar().getMaximum()
@@ -138,10 +186,11 @@ public class 쓰레드반복문스크롤이동 extends BaseFrame {
 			}
 		};
 
-		tScrollUp = new Thread(rScrollUp);
+		tScrollStart = new Thread(rScrollStart);
 		tNumUp = new Thread(rNumUp);
 		tNumDown = new Thread(rNumDown);
 
+		tScrollStart.start();
 	}
 
 }

@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import bases.BaseBT;
+
 public class MainFrame_sub extends JFrame {
 
 	private MainFrame mainFrame;
@@ -31,7 +33,7 @@ public class MainFrame_sub extends JFrame {
 	private JLabel jl6;
 	private JLabel jl7;
 	private JPanel tmp;
-	private Vector<BaseBt> btArr;
+	private Vector<BaseBT> btArr;
 
 	public MainFrame_sub(MainFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -145,10 +147,10 @@ public class MainFrame_sub extends JFrame {
 		for (int i = 0; i < getFirstDay(year, month) - 1; i++) {
 			center_center.add(new JLabel(""));
 		}
-		btArr = new Vector<BaseBt>();
+		btArr = new Vector<BaseBT>();
 		for (int i = 0; i < getMonthSize(year, month); i++) {
 			int tmps = i;
-			btArr.add(new BaseBt(i + 1 + ""));
+			btArr.add(new BaseBT(i + 1 + ""));
 			btArr.get(tmps).addActionListener(e -> {
 				System.out.println(btArr.get(tmps).getText());
 
