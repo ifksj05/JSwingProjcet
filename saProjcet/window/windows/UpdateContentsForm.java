@@ -7,6 +7,7 @@ import bases.BaseJB;
 import bases.BaseJL;
 import bases.BaseTA;
 import jdbc.DbManager;
+import model.UserModel;
 import model.msg;
 
 public class UpdateContentsForm extends BaseFrame {
@@ -36,6 +37,7 @@ public class UpdateContentsForm extends BaseFrame {
 		jbUpdate = new BaseJB("수정");
 		jbDelete = new BaseJB("삭제");
 		jbClose = new BaseJB("닫기");
+
 	}
 
 	@Override
@@ -57,10 +59,18 @@ public class UpdateContentsForm extends BaseFrame {
 	@Override
 	public void event() {
 		db = new DbManager();
+		
+		// * 만약 로그인 한 계정이 타 계정 이라면 *
+		if (!contentsArr.get(1).equals(UserModel.u_name)) {
+			jtaContents.setEnabled(false);
+			jbUpdate.setEnabled(false);
+			jbDelete.setEnabled(false);
+		}
+		
 		jbUpdate.addActionListener(e -> {
 			String contents = jtaContents.getText();
 			String n_no = contentsArr.get(0);
-			db.setDb("UPDATE `sa_project`.`notice` SET `n_contents` = ? WHERE (`n_no` = ?);", contents, n_no);
+			db.setDb("UPDATE `sa_projectㄹ`.`notice` SET `n_contents` = ? WHERE (`n_no` = ?);", contents, n_no);
 
 			msg.info("수정 성공");
 			mainForm.setContentsTable();

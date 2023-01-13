@@ -72,36 +72,39 @@ public class imgLable2 extends JFrame {
 		jsp.getHorizontalScrollBar().setValue(768);
 
 		front.addActionListener(e -> {
-			
+
 			for (int i = 1; i <= 100; i++) {
 				System.out.println(i + "번");
 				for (int i1 = 0; i1 < 100000000; i1++)
 					;
 			}
-			
+
 //				value = 0;
 //				jsp.getHorizontalScrollBar().setValue(value);
 		});
-		
+
 		last.addActionListener(e -> {
 			for (int i = 100; i >= 1; i--) {
 				System.out.println(i + "번");
 			}
-			
+
 //				value = jsp.getHorizontalScrollBar().getMaximum();
 //				jsp.getHorizontalScrollBar().setValue(value);
 		});
 		while (true) {
 
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
 
-//				Thread.sleep(100);
+//			for (int i = 0; i < 100000000; i++)
+//				;
+//			for (int i = 0; i < 100000000; i++)
+//				;
 
-			for (int i = 0; i < 100000000; i++)
-				;
-			for (int i = 0; i < 100000000; i++)
-				;
-
-			value += 10;
+			value += 5;
 			jsp.getHorizontalScrollBar().setValue(value);
 //			System.out.println("현재 값" + jsp.getHorizontalScrollBar().getValue());
 //			System.out.println("최대 값" + jsp.getHorizontalScrollBar().getMaximum());
